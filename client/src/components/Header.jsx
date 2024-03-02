@@ -48,9 +48,7 @@ function Header() {
             {isLoggedIn ? (
               <>
                 <li className="md:ml-5 xl:mx-5 hover:text-red-600">
-                  <NavLink to="/doubts">
-                    Doubts
-                  </NavLink>
+                  <NavLink to="/doubts">Doubts</NavLink>
                 </li>
                 <li className="md:ml-5 xl:mx-5 hover:text-red-600">
                   <NavLink to="/profile" onClick={closeMenu}>
@@ -64,6 +62,9 @@ function Header() {
                       />
                     )}
                   </NavLink>
+                </li>
+                <li className="md:ml-5 xl:mx-5 hover:text-red-600">
+                  <NavLink to="/activity">Activity</NavLink>
                 </li>
               </>
             ) : (
