@@ -34,7 +34,7 @@ app.use("/api/material", materialRouter);
 app.use("/api/doubt", doubtRouter);
 app.use("/api/comment", commentRouter);
 app.use("/api/activity", activityRouter);
-app.use("/api/participant", participantRouter)
+app.use("/api/participant", participantRouter);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;

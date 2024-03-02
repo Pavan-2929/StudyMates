@@ -65,18 +65,13 @@ const Login = () => {
   return (
     <div className="flex justify-around mt-14">
       <div className="hidden lg:flex">
-        <img
-          src={authImage}
-          alt="Register"
-          className="w-[25rem] h-[30rem]"
-        />
+        <img src={authImage} alt="Register" className="w-[25rem] h-[30rem]" />
       </div>
 
       <form
         onSubmit={handleSubmitLogin}
-        className="w-[90%] sm:w-1/2 h-fit lg:w-1/3 sm:p-8 p-4 rounded-lg mt-4 font-semibold  text-pure-greys-800 shadow-md shadow-pure-greys-100 "
+        className="w-[100%] sm:w-1/2 h-fit lg:w-1/3 sm:p-8 p-4 rounded-lg mt-4 font-semibold bg-[#122137] text-pure-greys-800 shadow-md shadow-pure-greys-100 "
       >
-        {/* bg-richblack-700 */}
         <h1 className="sm:text-5xl text-center text-3xl text-white font-bold mb-10 text-gray-800">
           Login
         </h1>

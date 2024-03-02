@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 .active {
-  color: red;
-  border-bottom: 2px solid red;
-  border-color: red;
+  color: #B69507;
+  border-bottom: 2px solid #B69507;
+  border-color: #B69507;
 }
 
 .active:hover {
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid #B69507;
 }
 /* Custom scrollbar width */
 .scrollbar-w-12::-webkit-scrollbar {
@@ -34,3 +34,20 @@
   color: white !important;
   font-size: large;
 } */
+
+
+.box{
+  box-shadow: 6px 6px 4px rgb(80, 82, 84);
+}
+.box2{
+  box-shadow: 3px 3px  rgb(80, 82, 84);
+}
+.box3{
+  box-shadow: 3px 3px  rgb(239, 217, 154);
+}
+.box :hover{
+  font-size: 17px;
+}
+.icon:hover{
+  fill: rgb(234, 223, 26);
+}

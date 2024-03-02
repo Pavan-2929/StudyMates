@@ -16,8 +16,7 @@ const SingleActivity = () => {
     participantsEmail: currentUser.email,
     activityId: id,
   });
-
-  console.log(formData);
+  const [allParticipants, setAllParticipants] = useState([]);
 
   const getActivity = async () => {
     try {
@@ -26,12 +25,12 @@ const SingleActivity = () => {
       );
       setActivity(response.data);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching activity:", error);
     }
   };
 
   const createParticipant = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       const response = await axios.post(
         "http://localhost:3000/api/participant/create",
@@ -40,14 +39,27 @@ const SingleActivity = () => {
       );
 
       console.log(response);
-      // getActivity();
+      // Optionally update state or show a success message
     } catch (error) {
-      console.log(error);
+      console.error("Error creating participant:", error);
+    }
+  };
+
+  const fetchParticipants = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/api/participant/get/${id}`
+      );
+      console.log(response);
+      setAllParticipants(response.data);
+    } catch (error) {
+      console.error("Error fetching participants:", error);
     }
   };
 
   useEffect(() => {
     getActivity();
+    fetchParticipants();
   }, []);
 
   const toggleModal = () => {
@@ -99,6 +111,25 @@ const SingleActivity = () => {
           </button>
         </div>
       )}
+
+      {currentUser && currentUser.userType === "instructor" && (
+        <div className="mt-4">
+          <h1 className="text-xl font-semibold mb-2">
+            All Students who participated in this activity
+          </h1>
+          {allParticipants.map((participant, index) => (
+            <div key={index} className="bg-gray-200 rounded p-3 mb-2">
+              <p className="text-gray-800 font-semibold">
+                Name: {participant.participantsName}
+              </p>
+              <p className="text-gray-600">
+                Email: {participant.participantsEmail}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
+
       {modal && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-6 md:p-10 rounded-lg shadow-lg md:w-[50vw] w-full">

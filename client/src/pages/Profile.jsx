@@ -189,7 +189,7 @@ const Profile = () => {
     <div className="flex justify-center mt-10">
       <form
         onSubmit={handleSubmit}
-        className="w-full lg:w-1/2 p-6 rounded-lg font-semibold bg-gray-200"
+        className="w-full lg:w-1/2 p-6 rounded-lg font-semibold bg-[#122137] "
       >
         <h1 className="text-3xl font-bold mb-6 text-center text-gray-700">
           Your Profile
@@ -232,7 +232,7 @@ const Profile = () => {
             id="username"
             value={formData.username}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 text-gray-800 focus:outline-none focus:border-blue-500 rounded-sm"
+            className="w-full p-2  text-white focus:outline-none focus:border-blue-500 rounded-sm bg-richblack-700 "
           />
         </div>
 
@@ -240,12 +240,13 @@ const Profile = () => {
           <label htmlFor="email" className="text-gray-700">
             Email
           </label>
+
           <input
             type="email"
             id="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 text-black focus:outline-none focus:border-blue-500 rounded-sm bg-gray-50 disabled:opacity-60"
+            className="w-full p-2  text-white focus:outline-none focus:border-blue-500 rounded-sm bg-richblack-700 "
             disabled
           />
         </div>
@@ -259,14 +260,14 @@ const Profile = () => {
             id="password"
             value={formData.password}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 text-gray-800 focus:outline-none focus:border-blue-500 rounded-sm"
+            className="w-full p-2  text-white focus:outline-none focus:border-blue-500 rounded-sm bg-richblack-700 "
           />
         </div>
 
         <div className="mb-4 flex justify-center">
           <button
             type="submit"
-            className="bg-blue-500 text-white p-2 mt-5 hover:bg-blue-600 rounded"
+            className="bg-[#212F3C] hover:bg-[#2d4052] box2 text-white px-4 py-2 rounded-full text-lg transition duration-300"
           >
             Update Profile
           </button>

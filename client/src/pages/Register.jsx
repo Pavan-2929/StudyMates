@@ -64,7 +64,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-around items-center mt-6">
+    <div className="flex justify-around items-center">
       <div className="hidden    lg:flex">
         <img
           src={authImage}
@@ -75,7 +75,7 @@ const Register = () => {
 
       <form
         onSubmit={handleSubmitRegister}
-        className="w-[90%] sm:w-1/2 h-fit lg:w-1/3 sm:p-8 p-4 rounded-lg mt-4 font-semibold  text-pure-greys-800  shadow-pure-greys-100 shadow-md border mb-5"
+        className="w-[90%] sm:w-1/2 h-fit lg:w-1/3 sm:p-8 p-4 rounded-lg mt-4 font-semibold bg-[#122137] text-pure-greys-800  shadow-pure-greys-100 shadow-md border mb-2"
       >
         <h1 className="sm:text-5xl text-3xl font-bold mb-6 text-gray-800 text-center text-white">
           Register
@@ -166,10 +166,7 @@ const Register = () => {
                 onChange={handleChange}
                 className="mr-2 cursor-pointer"
               />
-              <label
-                htmlFor="student"
-                className="text-gray-800 cursor-pointer"
-              >
+              <label htmlFor="student" className="text-gray-800 cursor-pointer">
                 Student
               </label>
             </div>
@@ -185,7 +182,7 @@ const Register = () => {
           <GoogleAuth />
         </div>
 
-        <div className="block sm:flex justify-between my-5 items-center text-white">
+        <div className="block sm:flex justify-between mt-5 items-center text-white">
           <div className="flex items-center justify-between text-[1rem]">
             <h3 className="text-gray-800 ">Have an account?</h3>
 
