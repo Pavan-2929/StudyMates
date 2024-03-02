@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../redux/auth/authSlice";
 import { NavLink } from "react-router-dom";
 import MaterialCard from "../components/MaterialCard";
 import { FaTimes } from "react-icons/fa";
+import {
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytesResumable,
+} from "firebase/storage";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -14,6 +20,10 @@ const Home = () => {
   const [userData, setUserData] = useState({});
   const [formData, setFormData] = useState({});
   const [materialsData, setMaterialData] = useState([]);
+  const [filePercentage, setFilePercentage] = useState(0);
+  const [fileError, setFileError] = useState(false);
+
+  const fileRef = useRef(null);
 
   const getUserData = async () => {
     try {
@@ -68,6 +78,45 @@ const Home = () => {
     }
     fetchMaterials();
   }, []);
+
+  const handleImageChange = (e) => {
+    try {
+      const imageFile = e.target.files[0];
+      if (!imageFile) return;
+
+      const handlefileUpload = async (image) => {
+        const storage = getStorage();
+        const fileName = new Date().getTime() + image.name;
+        const storageRef = ref(storage, fileName);
+
+        const uploadtask = uploadBytesResumable(storageRef, image);
+
+        uploadtask.on(
+          "state_changed",
+          (snapShot) => {
+            const progress =
+              (snapShot.bytesTransferred / snapShot.totalBytes) * 100;
+            setFilePercentage(Math.round(progress));
+          },
+          (error) => {
+            setFileError(true);
+            console.log(error);
+          },
+          () => {
+            getDownloadURL(uploadtask.snapshot.ref).then((downloadURL) =>
+              setFormData({ ...formData, materialURL: downloadURL })
+            );
+          }
+        );
+      };
+
+      handlefileUpload(imageFile);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(formData);
 
   return (
     <div className="container mx-auto mt-5 p-4 text-center">
@@ -164,14 +213,49 @@ const Home = () => {
                 />
               </div>
               <div className="mb-6">
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => fileRef.current.click()}
+                    className="w-full bg-red-500 py-2 px-4 rounded-md text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                  >
+                    Upload PDF File
+                  </button>
+                  <p className="mt-5 text-[1.2rem]">
+                    {fileError ? (
+                      <span className="text-red-700">
+                        Error Uploading Image (Image should be less than 2 MB)
+                      </span>
+                    ) : filePercentage > 0 && filePercentage < 100 ? (
+                      <span className="text-yellow-500">{`Uploading ${filePercentage}%`}</span>
+                    ) : filePercentage === 100 ? (
+                      <div className="flex justify-between items-center">
+                        <span className="text-green-500">File uploaded</span>
+                        <div className="ml-4">
+                          <a
+                            href={formData.materialURL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text--500 hover:text-red-700 font-semibold"
+                          >
+                            Check Material
+                          </a>
+                        </div>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                  </p>
+                </div>
                 <input
-                  id="materialURL"
-                  onChange={handleChange}
-                  type="text"
-                  className="w-full px-4 py-3 border rounded-md text-lg"
-                  placeholder="Material Link"
+                  type="file"
+                  ref={fileRef}
+                  hidden
+                  onChange={handleImageChange}
+                  className="w-full"
                 />
               </div>
+
               <div className="flex justify-between">
                 <button
                   type="submit"
