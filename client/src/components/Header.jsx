@@ -6,6 +6,10 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { logout, setUser } from "../redux/auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
+import { FaRegistered } from "react-icons/fa";
+import { IoLogInSharp } from "react-icons/io5";
+
 
 function Header() {
   const dispatch = useDispatch();
@@ -24,10 +28,10 @@ function Header() {
   };
 
   return (
-    <nav className={`bg-gray-200 p-4 font-semibold`}>
+    <nav className={` p-4 font-semibold border-b-2 border-gray-500`}>
       <div className="md:flex justify-around items-center">
         <div className="text-[2rem] flex justify-around items-center relative">
-          <span className="text-red-500 animate-fire">StudyMates</span>
+          <span className=" animate-fire text-yellow-300">StudyMates</span>
           <div onClick={toggleMenu} className="md:hidden">
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </div>
@@ -39,15 +43,17 @@ function Header() {
               isMenuOpen ? "block" : "hidden"
             } space-y-8 md:space-y-0 items-center flex flex-col md:flex-row justify-center `}
           >
-            <li className="md:ml-5 xl:mx-5 sm:mt-0 mt-10 hover:text-red-600">
+            <li className="md:ml-5 xl:mx-5 sm:mt-0 mt-10 hover:text-red-600 ">
               <NavLink to="/" onClick={closeMenu}>
-                Home
+                <div className="line hover:text-yellow-300 ">
+                <FaHome />Home
+                </div>
               </NavLink>
             </li>
 
             {isLoggedIn ? (
               <>
-                <li className="md:ml-5 xl:mx-5 hover:text-red-600">
+                <li className="md:ml-5 xl:mx-5  hover:text-red-600">
                   <NavLink to="/doubts">
                     Doubts
                   </NavLink>
@@ -68,16 +74,21 @@ function Header() {
               </>
             ) : (
               <>
-                <li className="md:ml-5 xl:mx-5 hover:text-red-600">
+                <li className="md:ml-5 xl:mx-5 ">
                   <NavLink to="/register" onClick={closeMenu}>
-                    Register
+                    <div className="line hover:text-yellow-300">
+                    <FaRegistered className="text-slate-800 "/>Register
+                    </div>
                   </NavLink>
                 </li>
-                <li className="md:ml-5 xl:mx-5 hover:text-red-600">
+                <li className="md:ml-5 xl:mx-5 ">
                   <NavLink to="/login" onClick={closeMenu}>
-                    Login
+                    <div className="line hover:text-yellow-300">
+                    <IoLogInSharp className="text-slate-800 "/>Login
+                    </div>
+                  
                   </NavLink>
-                </li>
+                </li >
               </>
             )}
           </ul>

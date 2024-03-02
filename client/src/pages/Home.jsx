@@ -5,6 +5,7 @@ import { setUser } from "../redux/auth/authSlice";
 import { NavLink } from "react-router-dom";
 import MaterialCard from "../components/MaterialCard";
 import { FaTimes } from "react-icons/fa";
+import "./Home.css";
 import {
   getDownloadURL,
   getStorage,
@@ -131,25 +132,29 @@ const Home = () => {
           <p className="text-lg">
             Welcome back to our awesome platform. Explore and enjoy your time!
           </p>
+          
         </div>
       ) : (
-        <div className="bg-gray-200 p-6 rounded-lg shadow-lg">
+        <div className="bg-gray-200 p-6 rounded-lg shadow-lg heading">
           <h1 className="text-3xl font-semibold mb-4">
-            Welcome to Our Platform
+            Welcome to <span className="platform">StudyMates</span>
           </h1>
+          
+          
+          
           <p className="text-lg">
             Sign in or register to access exclusive features and content.
           </p>
           <div className="mt-8 flex justify-center">
             <NavLink
               to="/login"
-              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full text-lg mr-4 transition duration-300"
+              className="bg-yellow-400 hover:bg-yellow-300 box3 text-black px-4 py-2 rounded-full text-lg mr-4 transition duration-300"
             >
-              Login
+             <b className="text-black">Login</b> 
             </NavLink>
             <NavLink
               to="/register"
-              className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full text-lg transition duration-300"
+              className="bg-[#212F3C] hover:bg-[#2d4052] box2 text-white px-4 py-2 rounded-full text-lg transition duration-300"
             >
               Register
             </NavLink>
@@ -157,7 +162,7 @@ const Home = () => {
         </div>
       )}
 
-      <div className="mt-8 bg-gray-200 rounded-lg shadow-lg">
+      <div className="mt-8 bg-gray-200 rounded-lg shadow-lg heading border-t-2 border-gray-500">
         <h1 className="text-2xl font-semibold pt-4 my-2">
           Find the Material for Your Curriculum
         </h1>

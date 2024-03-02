@@ -107,18 +107,18 @@ const MaterialCard = ({ materialsData, fetchMaterials }) => {
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
         {materialsData.map((material) => (
-          <div key={material._id} className="bg-white rounded-lg p-6 shadow-md">
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">
+          <div key={material._id} className="bg-[#122137] box rounded-lg p-6 shadow-md">
+            <h3 className="text-xl font-semibold text-yellow-400 mb-2">
               {material.title}
             </h3>
-            <p className="text-gray-600 mb-4">{material.description}</p>
+            <p className="text-white-600 mb-4">{material.description}</p>
             <div className="flex justify-between items-center font-bold">
               {currentUser && currentUser.userType === "instructor" ? (
                 <>
                   <div className="flex justify-between items-center w-full space-x-4 font-bold">
                     <a
                       href={material.materialURL}
-                      className="bg-blue-300 text-blue-700 rounded-full py-1 px-3 mr-2 mb-2"
+                      className="bg-slate-800 text-white-800 rounded-full py-1 px-3 mr-2 mb-2"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -148,11 +148,11 @@ const MaterialCard = ({ materialsData, fetchMaterials }) => {
                 <div className="flex mx-auto">
                   <a
                     href={material.materialURL}
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md inline-block hover:bg-blue-600 mb-2 md:mb-0"
-                    target="_blank"
+                    className="bg bg-yellow-400 box3 px-4 py-2 rounded-md inline-block hover:bg-yellow-300 mb-2 md:mb-0"
+                    target="_blan-blue-500k"
                     rel="noopener noreferrer"
                   >
-                    Link
+                      <b className="text-black"> Link </b>
                   </a>
                 </div>
               )}
