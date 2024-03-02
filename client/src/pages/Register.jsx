@@ -130,7 +130,11 @@ const Register = () => {
 
             <input
               type="password"
+<<<<<<< HEAD
               id="confirmpassword"
+=======
+              id="confirmPassword"
+>>>>>>> 1129cece1aa2dd327c4b71df4169709bc01f7c3b
               placeholder="confirmpassword"
               onChange={handleChange}
               className="w-full pl-10 pr-2 py-2 border border-gray-300 text-gray-800 focus:outline-none focus:border-blue-500 rounded-sm"
