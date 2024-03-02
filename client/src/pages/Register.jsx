@@ -6,20 +6,21 @@ import { login } from "../redux/auth/authSlice";
 import { NavLink, useNavigate } from "react-router-dom";
 import GoogleAuth from "../components/GoogleAuth";
 import toast from "react-hot-toast";
-
+import { CiMail } from "react-icons/ci";
+import { FiAtSign } from "react-icons/fi";
+import { FaKey } from "react-icons/fa";
 const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({});
 
-const handleChange = (e) => {
-  if (e.target.type === "radio") {
-    setFormData({ ...formData, userType: e.target.value });
-  } else {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
-  }
-};
-
+  const handleChange = (e) => {
+    if (e.target.type === "radio") {
+      setFormData({ ...formData, userType: e.target.value });
+    } else {
+      setFormData({ ...formData, [e.target.id]: e.target.value });
+    }
+  };
 
   const handleSubmitRegister = async (e) => {
     e.preventDefault();
@@ -63,8 +64,8 @@ const handleChange = (e) => {
   };
 
   return (
-    <div className="flex justify-around items-center mt-6">
-      <div className="hidden lg:flex">
+    <div className="flex justify-evenly items-center mt-6">
+      <div className="hidden    lg:flex">
         <img
           src={authImage}
           alt="Register"
@@ -74,60 +75,79 @@ const handleChange = (e) => {
 
       <form
         onSubmit={handleSubmitRegister}
-        className="w-full lg:w-1/2 sm:p-8 p-4 rounded-lg mt-4 font-semibold bg-gray-100"
+        className="w-[90%] sm:w-1/2 h-fit lg:w-1/3 sm:p-8 p-4 rounded-lg mt-4 font-semibold bg-slate-50 shadow-lg"
       >
         <h1 className="sm:text-5xl text-3xl font-bold mb-6 text-gray-800 text-center">
-          Register with your account
+          Register
         </h1>
 
-        <div className="mb-4">
-          <label htmlFor="username" className="text-gray-800">
-            Username
-          </label>
-          <input
-            type="text"
-            id="username"
-            onChange={handleChange}
-            className="w-full p-2 border border-gray-300 text-gray-800 focus:outline-none focus:border-blue-500 rounded-sm"
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="email" className="text-gray-800">
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            onChange={handleChange}
-            className="w-full p-2 border border-gray-300 text-gray-800 focus:outline-none focus:border-blue-500 rounded-sm"
-          />
+        <div className="mb-4 relative">
+          <div className="relative flex">
+            <FiAtSign className="h-5 w-5 absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-500" />
+
+            <input
+              type="text"
+              id="username"
+              onChange={handleChange}
+              placeholder="username"
+              className="w-full pl-10 pr-2 py-2 border border-gray-300 text-gray-800 focus:outline-none focus:border-blue-500 rounded-sm"
+            />
+          </div>
         </div>
 
-        <div className="mb-4">
-          <label htmlFor="password" className="text-gray-800">
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            onChange={handleChange}
-            className="w-full p-2 border border-gray-300 text-gray-800 focus:outline-none focus:border-blue-500 rounded-sm"
-          />
+        {/* */}
+        <div className="mb-4 relative">
+          <div className="relative flex">
+            <CiMail className="h-5 w-5 absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-500" />
+
+            <input
+              type="email"
+              id="email"
+              placeholder="Email"
+              onChange={handleChange}
+              className="w-full pl-10 pr-2 py-2 border border-gray-300 text-gray-800 focus:outline-none focus:border-blue-500 rounded-sm"
+            />
+          </div>
         </div>
 
-        <div className="mb-4">
-          <label htmlFor="confirmPassword" className="text-gray-800">
-            Confirm Password
-          </label>
-          <input
-            type="password"
-            id="confirmPassword"
-            onChange={handleChange}
-            className="w-full p-2 border border-gray-300 text-gray-800 focus:outline-none focus:border-blue-500 rounded-sm"
-          />
+        <div className="mb-4 relative">
+          <div className="relative flex">
+            <FaKey className="h-5 w-5 absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-500" />
+
+            <input
+              type="password"
+              id="password"
+              placeholder="password"
+              onChange={handleChange}
+              className="w-full pl-10 pr-2 py-2 border border-gray-300 text-gray-800 focus:outline-none focus:border-blue-500 rounded-sm"
+            />
+          </div>
         </div>
-        <div>
-          <label className="text-gray-800 block mb-2">User Type:</label>
+
+        <div className="mb-4 relative">
+          <div className="relative flex">
+            <FaKey className="h-5 w-5 absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-500" />
+
+            <input
+              type="password"
+              id="password"
+              placeholder="confirmpassword"
+              onChange={handleChange}
+              className="w-full pl-10 pr-2 py-2 border border-gray-300 text-gray-800 focus:outline-none focus:border-blue-500 rounded-sm"
+            />
+          </div>
+        </div>
+        <div className="mb-4 relative">
+          <button
+            type="submit"
+            className="bg-blue-500 text-white p-2 mt-2 hover:bg-blue-700 rounded focus:outline-none mr-10 w-full "
+          >
+            Register Now
+          </button>
+          <GoogleAuth />
+        </div>
+        <div className="flex gap-3 items-center my-4">
+          <div className="text-gray-800 block ">User Type:</div>
           <div className="flex items-center">
             <div className="flex items-center mr-6">
               <input
@@ -154,30 +174,23 @@ const handleChange = (e) => {
                 onChange={handleChange}
                 className="mr-2 cursor-pointer"
               />
-              <label htmlFor="student" className="text-gray-800 cursor-pointer">
+              <label
+                htmlFor="student"
+                className="text-gray-800 cursor-pointer"
+              >
                 Student
               </label>
             </div>
           </div>
         </div>
 
-        <div className="block sm:flex justify-between items-center">
-          <div>
-            <button
-              type="submit"
-              className="bg-blue-500 text-white p-2 mt-2 hover:bg-blue-700 rounded focus:outline-none mr-10"
-            >
-              Register Now
-            </button>
-            <GoogleAuth />
-          </div>
-          <div className="flex items-center text-[1.2rem]">
-            <div className="mt-5">
-              <h3 className="text-gray-800">Have an account?</h3>
-            </div>
+        <div className="block sm:flex justify-between my-5 items-center">
+          <div className="flex items-center justify-between text-[1rem]">
+            <h3 className="text-gray-800 ">Have an account?</h3>
+
             <NavLink
               to="/login"
-              className="text-blue-500 p-2 mt-2 underline rounded ml-2 focus:outline-none"
+              className="text-blue-500 underline rounded ml-2 focus:outline-none"
             >
               Login
             </NavLink>

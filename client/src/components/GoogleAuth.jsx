@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../redux/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { FaGoogle } from "react-icons/fa";
 
 const GoogleAuth = () => {
   const dispatch = useDispatch();
@@ -65,8 +66,9 @@ const GoogleAuth = () => {
     <button
       type="submit"
       onClick={handleGoogleClick}
-      className="bg-red-500 text-white p-2 mt-5 hover:bg-red-600 rounded"
+      className="bg-red-500 w-full flex items-center gap-4 justify-center text-white p-2 mt-5 hover:bg-red-600 rounded"
     >
+      <FaGoogle className=" text-2xl" />
       Google
     </button>
   );
