@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { FaTimes } from "react-icons/fa";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   getDownloadURL,
   getStorage,
@@ -9,8 +9,6 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { NavLink } from "react-router-dom";
-import { IoMdBookmark } from "react-icons/io";
-import { setUser } from "../redux/auth/authSlice";
 
 const MaterialCard = ({ materialsData, fetchMaterials }) => {
   const [formData, setFormData] = useState({
@@ -22,10 +20,8 @@ const MaterialCard = ({ materialsData, fetchMaterials }) => {
   const [materialId, setMaterialId] = useState(null);
   const [filePercentage, setFilePercentage] = useState(0);
   const [fileError, setFileError] = useState(false);
-  const [isBookmark, setIsBookMark] = useState(false);
 
   const fileRef = useRef();
-  const dispatch = useDispatch();
 
   const currentUser = useSelector((state) => state.currentUser);
 
@@ -107,54 +103,22 @@ const MaterialCard = ({ materialsData, fetchMaterials }) => {
     }
   };
 
-  const handleBookMark = async (id) => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/api/bookmark",
-        { materialId: id },
-        { withCredentials: true }
-      );
-      toggleBookMark();
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const toggleBookMark = () => {
-    setIsBookMark(!isBookmark);
-  };
-  console.log(currentUser);
-
   return (
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
         {materialsData.map((material) => (
-          <div key={material._id} className="bg-white rounded-lg p-6 shadow-md">
-            <div className="flex justify-between items-center mb-2">
-              <h3 className="text-xl font-semibold text-gray-800 truncate flex-grow max-w-[80%] ml-10">
-                {material.title}
-              </h3>
-              <IoMdBookmark
-                onClick={() => handleBookMark(material._id)}
-                className={`text-3xl ${
-                  currentUser &&
-                  (currentUser.bookMark.includes(material._id) || isBookmark)
-                    ? "text-blue-500"
-                    : "text-gray-300"
-                }`}
-              />
-            </div>
-            <p className="text-gray-600 mb-4 truncate">
-              {material.description}
-            </p>
+          <div key={material._id} className="bg-[#122137] box rounded-lg p-6 shadow-md">
+            <h3 className="text-xl font-semibold text-yellow-400 mb-2">
+              {material.title}
+            </h3>
+            <p className="text-white-600 mb-4">{material.description}</p>
             <div className="flex justify-between items-center font-bold">
               {currentUser && currentUser.userType === "instructor" ? (
                 <>
                   <div className="flex justify-between items-center w-full space-x-4 font-bold">
                     <a
                       href={material.materialURL}
-                      className="bg-blue-300 text-blue-700 rounded-full py-1 px-3 mr-2 mb-2"
+                      className="bg-slate-800 text-white-800 rounded-full py-1 px-3 mr-2 mb-2"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -184,11 +148,11 @@ const MaterialCard = ({ materialsData, fetchMaterials }) => {
                 <div className="flex mx-auto">
                   <a
                     href={material.materialURL}
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md inline-block hover:bg-blue-600 mb-2 md:mb-0"
-                    target="_blank"
+                    className="bg bg-yellow-400 box3 px-4 py-2 rounded-md inline-block hover:bg-yellow-300 mb-2 md:mb-0"
+                    target="_blan-blue-500k"
                     rel="noopener noreferrer"
                   >
-                    Link
+                      <b className="text-black"> Link </b>
                   </a>
                 </div>
               )}

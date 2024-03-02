@@ -64,7 +64,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-around items-center mt-6">
+    <div className="flex justify-evenly items-center mt-6">
       <div className="hidden    lg:flex">
         <img
           src={authImage}
@@ -75,70 +75,78 @@ const Register = () => {
 
       <form
         onSubmit={handleSubmitRegister}
-        className="w-[90%] sm:w-1/2 h-fit lg:w-1/3 sm:p-8 p-4 rounded-lg mt-4 font-semibold  text-pure-greys-800  shadow-pure-greys-100 shadow-md border mb-5"
+        className="w-[90%] sm:w-1/2 h-fit lg:w-1/3 sm:p-8 p-4 rounded-lg mt-4 font-semibold bg-slate-50 shadow-lg"
       >
-        <h1 className="sm:text-5xl text-3xl font-bold mb-6 text-gray-800 text-center text-white">
+        <h1 className="sm:text-5xl text-3xl font-bold mb-6 text-gray-800 text-center">
           Register
         </h1>
 
-        <div className="mb-5 mt-5 relative">
+        <div className="mb-4 relative">
           <div className="relative flex">
-            <FiAtSign className="h-5 w-5 absolute top-1/2 transform -translate-y-1/2 left-3 text-white" />
+            <FiAtSign className="h-5 w-5 absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-500" />
 
             <input
               type="text"
               id="username"
               onChange={handleChange}
               placeholder="username"
-              className="w-full pl-10 pr-2 py-2  text-white focus:outline-none focus:border-blue-500 rounded-sm bg-richblack-700 "
+              className="w-full pl-10 pr-2 py-2 border border-gray-300 text-gray-800 focus:outline-none focus:border-blue-500 rounded-sm"
             />
           </div>
         </div>
 
         {/* */}
-        <div className="mb-5 relative">
+        <div className="mb-4 relative">
           <div className="relative flex">
-            <CiMail className="h-5 w-5 absolute top-1/2 transform -translate-y-1/2 left-3 text-white" />
+            <CiMail className="h-5 w-5 absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-500" />
 
             <input
               type="email"
               id="email"
               placeholder="Email"
               onChange={handleChange}
-              className="w-full pl-10 pr-2 py-2  text-white focus:outline-none focus:border-blue-500 rounded-sm bg-richblack-700 "
+              className="w-full pl-10 pr-2 py-2 border border-gray-300 text-gray-800 focus:outline-none focus:border-blue-500 rounded-sm"
             />
           </div>
         </div>
 
-        <div className="mb-5 relative">
+        <div className="mb-4 relative">
           <div className="relative flex">
-            <FaKey className="h-5 w-5 absolute top-1/2 transform -translate-y-1/2 left-3 text-white" />
+            <FaKey className="h-5 w-5 absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-500" />
 
             <input
               type="password"
               id="password"
               placeholder="password"
               onChange={handleChange}
-              className="w-full pl-10 pr-2 py-2  text-white focus:outline-none focus:border-blue-500 rounded-sm bg-richblack-700 "
+              className="w-full pl-10 pr-2 py-2 border border-gray-300 text-gray-800 focus:outline-none focus:border-blue-500 rounded-sm"
             />
           </div>
         </div>
 
-        <div className="mb-5 relative">
+        <div className="mb-4 relative">
           <div className="relative flex">
-            <FaKey className="h-5 w-5 absolute top-1/2 transform -translate-y-1/2 left-3 text-white" />
+            <FaKey className="h-5 w-5 absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-500" />
 
             <input
               type="password"
-              id="confirmPassword"
+              id="password"
               placeholder="confirmpassword"
               onChange={handleChange}
-              className="w-full pl-10 pr-2 py-2  text-white focus:outline-none focus:border-blue-500 rounded-sm bg-richblack-700 "
+              className="w-full pl-10 pr-2 py-2 border border-gray-300 text-gray-800 focus:outline-none focus:border-blue-500 rounded-sm"
             />
           </div>
         </div>
-        <div className="h-[15px]"></div>
-        <div className="flex text-white gap-3 items-center my-4">
+        <div className="mb-4 relative">
+          <button
+            type="submit"
+            className="bg-blue-500 text-white p-2 mt-2 hover:bg-blue-700 rounded focus:outline-none mr-10 w-full "
+          >
+            Register Now
+          </button>
+          <GoogleAuth />
+        </div>
+        <div className="flex gap-3 items-center my-4">
           <div className="text-gray-800 block ">User Type:</div>
           <div className="flex items-center">
             <div className="flex items-center mr-6">
@@ -175,23 +183,14 @@ const Register = () => {
             </div>
           </div>
         </div>
-        <div className="mb-4 relative">
-          <button
-            type="submit"
-            className=" bg-yellow-50 w-full text-pure-greys-800  p-2 mt-5 hover:scale-95 rounded focus:outline-none mr-10"
-          >
-            Register Now
-          </button>
-          <GoogleAuth />
-        </div>
 
-        <div className="block sm:flex justify-between my-5 items-center text-white">
+        <div className="block sm:flex justify-between my-5 items-center">
           <div className="flex items-center justify-between text-[1rem]">
             <h3 className="text-gray-800 ">Have an account?</h3>
 
             <NavLink
               to="/login"
-              className="text-white underline rounded ml-2 focus:outline-none"
+              className="text-blue-500 underline rounded ml-2 focus:outline-none"
             >
               Login
             </NavLink>

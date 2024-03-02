@@ -7,12 +7,10 @@ import userRotuer from "./routes/user.routes.js";
 import materialRouter from "./routes/material.routes.js";
 import doubtRouter from "./routes/Doubt.routes.js";
 import commentRouter from "./routes/comment.routes.js";
-import activityRouter from "./routes/activity.routes.js";
-import participantRouter from "./routes/participant.routes.js";
 
 const app = express();
-app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
-app.use(express.json());
+app.use(cors({credentials: true, origin:"http://localhost:5173"}))
+app.use(express.json())
 dotenv.config();
 
 const PORT = 3000 || process.env.PORT;
@@ -28,13 +26,11 @@ mongoose
   })
   .catch((error) => console.log(error));
 
-app.use("/api/auth", authRouter);
-app.use("/api", userRotuer);
-app.use("/api/material", materialRouter);
-app.use("/api/doubt", doubtRouter);
-app.use("/api/comment", commentRouter);
-app.use("/api/activity", activityRouter);
-app.use("/api/participant", participantRouter)
+app.use('/api/auth', authRouter)  
+app.use('/api', userRotuer)
+app.use('/api/material', materialRouter)
+app.use('/api/doubt', doubtRouter)
+app.use('/api/comment', commentRouter)
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;

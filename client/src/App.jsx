@@ -6,8 +6,6 @@ import Header from "./components/Header";
 import Profile from "./pages/Profile";
 import Doubts from "./pages/Doubts";
 import SingleDoubt from "./pages/SingleDoubt";
-import Activity from "./pages/Activity";
-import SingleActivity from "./pages/SingleActivity";
 
 function App() {
   return (
@@ -18,11 +16,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/doubts" element={<Doubts />} />
-          <Route path="/doubts/:id" element={<SingleDoubt />} />
-          <Route path="/activity" element={<Activity />} />
-          <Route path="/activity/:id" element={<SingleActivity />} />
+          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/doubts" element={<Doubts/>} />
+          <Route path="/doubts/:id" element={<SingleDoubt/>} />
         </Routes>
       </BrowserRouter>
     </>

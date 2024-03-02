@@ -9,7 +9,6 @@ import { NavLink } from "react-router-dom";
 import toast from "react-hot-toast";
 import { CiMail } from "react-icons/ci";
 import { FaKey } from "react-icons/fa";
-import "../index.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -74,44 +73,43 @@ const Login = () => {
 
       <form
         onSubmit={handleSubmitLogin}
-        className="w-[90%] sm:w-1/2 h-fit lg:w-1/3 sm:p-8 p-4 rounded-lg mt-4 font-semibold  text-pure-greys-800 shadow-md shadow-pure-greys-100 "
+        className="w-[90%] sm:w-1/2 h-fit lg:w-1/3 sm:p-8 p-4 rounded-lg mt-4 font-semibold bg-slate-50 shadow-lg"
       >
-        {/* bg-richblack-700 */}
-        <h1 className="sm:text-5xl text-center text-3xl text-white font-bold mb-10 text-gray-800">
+        <h1 className="sm:text-5xl text-center text-3xl font-bold mb-10 text-gray-800">
           Login
         </h1>
 
         <div className="mb-4 relative">
           <div className="relative flex">
-            <CiMail className="h-5 w-5 absolute top-1/2 transform -translate-y-1/2 left-3 text-white" />
+            <CiMail className="h-5 w-5 absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-500" />
 
             <input
               type="email"
               id="email"
               placeholder="Email"
               onChange={handleChange}
-              className="w-full pl-10 pr-2 py-2  text-white focus:outline-none focus:border-blue-500 rounded-sm bg-richblack-700 "
+              className="w-full pl-10 pr-2 py-2 border border-gray-300 text-gray-800 focus:outline-none focus:border-blue-500 rounded-sm"
             />
           </div>
         </div>
 
         <div className="mb-4 relative">
           <div className="relative flex">
-            <FaKey className="h-5 w-5 absolute top-1/2 transform -translate-y-1/2 left-3 text-pure-greys-100" />
+            <FaKey className="h-5 w-5 absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-500" />
 
             <input
               type="password"
               id="password"
               placeholder="password"
               onChange={handleChange}
-              className="w-full pl-10 pr-2 py-2  text-white focus:outline-none focus:border-blue-500 rounded-sm bg-richblack-700 "
+              className="w-full pl-10 pr-2 py-2 border border-gray-300 text-gray-800 focus:outline-none focus:border-blue-500 rounded-sm"
             />
           </div>
         </div>
         <div className="mb-4 relative">
           <button
             type="submit"
-            className=" bg-yellow-50 w-full text-pure-greys-800  p-2 mt-5 hover:scale-95 rounded focus:outline-none mr-10"
+            className="bg-blue-500 w-full text-white p-2 mt-5 hover:bg-blue-700 rounded focus:outline-none mr-10"
           >
             Login Now
           </button>
@@ -120,11 +118,11 @@ const Login = () => {
 
         <div className="block sm:flex justify-between my-5 items-center">
           <div className="flex items-center justify-between text-[1rem]">
-            <h3 className="text-white">Create an account?</h3>
+            <h3 className="text-gray-800">Create an account?</h3>
 
             <NavLink
               to="/register"
-              className=" text-pure-greys-50 underline rounded ml-2 focus:outline-none"
+              className="text-blue-500 underline rounded ml-2 focus:outline-none"
             >
               Register
             </NavLink>

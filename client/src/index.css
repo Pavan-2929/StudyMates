@@ -3,34 +3,45 @@
 @tailwind utilities;
 
 .active {
-  color: red;
-  border-bottom: 2px solid red;
-  border-color: red;
+  color: red; /* text-red-600 */
+  border-color: red; /* border-red-600 */
+  border-bottom: 2px solid red; /* border-b-2 border-red-600 */
 }
 
-.active:hover {
-  border-bottom: 2px solid red;
+.line{
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }
-/* Custom scrollbar width */
-.scrollbar-w-12::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Custom scrollbar track color */
-.scrollbar-track-bg::-webkit-scrollbar-track {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 8 20 / var(--tw-bg-opacity));
+*{
+  color: white;
 }
 
-/* Custom scrollbar thumb color */
-.scrollbar-thumb-bg::-webkit-scrollbar-thumb {
-  --tw-bg-opacity: 1;
-  background-color: rgb(22 29 41 / var(--tw-bg-opacity)); /* Example color */
+.heading{
+  background-color: #000814;
 }
-.bgcolor {
-  background-color: wheat;
+.platform{
+  color: rgb(59, 236, 221);
 }
-/* .inputplace ::placeholder {
-  color: white !important;
-  font-size: large;
-} */
+.box{
+  box-shadow: 6px 6px 4px rgb(80, 82, 84);
+}
+.box2{
+  box-shadow: 3px 3px  rgb(80, 82, 84);
+}
+.box3{
+  box-shadow: 3px 3px  rgb(239, 217, 154);
+}
+.box :hover{
+  font-size: 17px;
+}
+.icon:hover{
+  fill: rgb(234, 223, 26);
+}
+
+
+
+
+
+
+

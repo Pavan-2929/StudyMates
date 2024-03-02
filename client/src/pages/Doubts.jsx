@@ -3,8 +3,7 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { IoIosArrowDown } from "react-icons/io";
-import "../index.css";
+
 const Doubts = () => {
   const currentUser = useSelector((state) => state.currentUser);
   const [doubtData, setDoubtData] = useState([]);
@@ -67,125 +66,100 @@ const Doubts = () => {
 
   return (
     <div className="container mx-auto md:px-14 mb-10">
-      <div className=" flex items-center justify-between mb-5">
-        <h1 className="text-3xl font-bold mb-4 text-center my-6"></h1>
-        <div className="flex justify-center my-6">
-          <button
-            onClick={toggleModal}
-            className=" bg-yellow-25 hover:bg-yellow-200  text-richblue-900 px-4 py-2 text-lg transition duration-300 flex items-center gap-3 rounded-xl h-[40px]  hover:scale-95 "
-          >
-            Add Questions
-            <IoIosArrowDown className=" border-l border-white p-1 text-3xl" />
-          </button>
-        </div>
+      <h1 className="text-3xl font-bold mb-4 text-center my-6">Doubts</h1>
+      <div className="flex justify-center my-6">
+        <button
+          onClick={toggleModal}
+          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-lg transition duration-300"
+        >
+          Add Doubt
+        </button>
       </div>
-
-      <div className="flex sm:flex-row flex-col items-center justify-center ">
-        <div className="sm:w-[50%] w-full  flex flex-col items-center">
-          <h1 className=" text-left text-4xl">Doubt Questions</h1>
-          <div className="h-[30px]"></div>
-          <p className=" w-[70%] text-slate-300 text-justify   ">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
-            unde quis! Animi quas totam
-          </p>
-          <div className="flex flex-col mt-5  overflow-y-scroll w-[70%] scrollbar-w-12 scrollbar-track-bg h-[90vh] scrollbar-thumb-bg">
-            {doubtData.map((doubt, index) => (
-              <div
-                key={index}
-                className=" bg-richblack-800 outline-1 outline-pure-greys-25 m-4 rounded-lg shadow-md"
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {doubtData.map((doubt, index) => (
+          <div
+            key={index}
+            className="bg-gray-200 rounded-lg shadow-md overflow-hidden"
+          >
+            <img
+              src={doubt.image}
+              alt={doubt.title}
+              className="w-full h-48 object-cover"
+            />
+            <div className="p-6">
+              <h2 className="text-lg font-semibold mb-2">{doubt.title}</h2>
+              <p className="text-gray-600 mb-4">{doubt.description}</p>
+              <NavLink
+                to={`/doubts/${doubt._id}`}
+                className="inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mr-5"
               >
-                {/* <img
-                  src={doubt.image}
-                  alt={doubt.title}
-                  className="w-full h-48 object-cover"
-                /> */}
-
-                <div className="p-6">
-                  <h2 className="text-lg font-semibold mb-2">
-                    Q . {doubt.title}
-                  </h2>
-                  <p className="text-gray-600 mb-4">
-                    des : {doubt.description}
-                  </p>
-                  <NavLink
-                    to={`/doubts/${doubt._id}`}
-                    className="inline-block px-4 py-2 bg-richblack-700 text-white rounded hover:bg-richblack-600 hover:scale-95 mr-5 shadow-richblack-400 shadow-sm"
-                  >
-                    Explore
-                  </NavLink>
-                  {currentUser && currentUser._id === doubt.userId && (
-                    <button
-                      onClick={() => deleteDoubt(doubt._id)}
-                      className="inline-block px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-                    >
-                      Delete
-                    </button>
-                  )}
-                </div>
-              </div>
-            ))}
-            {showModal && (
-              <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
-                <div className="bg-gray-200 p-6 md:p-10 rounded-lg shadow-lg md:w-[50vw] w-full">
-                  <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-2xl md:text-3xl font-semibold text-center">
-                      Ask doubt
-                    </h2>
-                    <span
-                      className="cursor-pointer text-xl p-2 rounded-md text-slate-900 hover:bg-red-600"
-                      onClick={toggleModal}
-                    >
-                      <FaTimes />
-                    </span>
-                  </div>
-                  <form onSubmit={createNewDoubt}>
-                    <div className="mb-6">
-                      <input
-                        value={formData.title}
-                        onChange={handleChange}
-                        id="title"
-                        type="text"
-                        className="w-full px-4 py-3 border rounded-md text-lg"
-                        placeholder="Doubt Titile"
-                      />
-                    </div>
-                    <div className="mb-6">
-                      <input
-                        value={formData.description}
-                        id="description"
-                        onChange={handleChange}
-                        type="text"
-                        className="w-full px-4 py-3 border rounded-md text-lg"
-                        placeholder="Brief description about doubt"
-                      />
-                    </div>
-                    <div className="flex justify-end">
-                      <button
-                        type="submit"
-                        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-lg transition duration-300 mr-2"
-                      >
-                        Submit
-                      </button>
-                      <button
-                        type="button"
-                        onClick={toggleModal}
-                        className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md text-lg transition duration-300"
-                      >
-                        Close
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            )}
+                Explore
+              </NavLink>
+              {currentUser && currentUser._id === doubt.userId && (
+                <button
+                  onClick={() => deleteDoubt(doubt._id)}
+                  className="inline-block px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                >
+                  Delete
+                </button>
+              )}
+            </div>
           </div>
-        </div>
-
-        <img
-          src="https://thumbs.dreamstime.com/b/vertical-business-background-group-businesspeople-around-meeting-table-having-discussion-office-170709724.jpg"
-          alt="img"
-          className="sm:w-[50%] h-[90vh] w-full px-5 sm:object-cover"
-        />
+        ))}
+        {showModal && (
+          <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
+            <div className="bg-gray-200 p-6 md:p-10 rounded-lg shadow-lg md:w-[50vw] w-full">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-2xl md:text-3xl font-semibold">
+                  Update Material
+                </h2>
+                <span
+                  className="cursor-pointer text-xl p-2 rounded-md bg-red-500 text-white hover:bg-red-600"
+                  onClick={toggleModal}
+                >
+                  <FaTimes />
+                </span>
+              </div>
+              <form onSubmit={createNewDoubt}>
+                <div className="mb-6">
+                  <input
+                    value={formData.title}
+                    onChange={handleChange}
+                    id="title"
+                    type="text"
+                    className="w-full px-4 py-3 border rounded-md text-lg"
+                    placeholder="Doubt Titile"
+                  />
+                </div>
+                <div className="mb-6">
+                  <input
+                    value={formData.description}
+                    id="description"
+                    onChange={handleChange}
+                    type="text"
+                    className="w-full px-4 py-3 border rounded-md text-lg"
+                    placeholder="Brief description about doubt"
+                  />
+                </div>
+                <div className="flex justify-end">
+                  <button
+                    type="submit"
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-lg transition duration-300 mr-2"
+                  >
+                    Submit
+                  </button>
+                  <button
+                    type="button"
+                    onClick={toggleModal}
+                    className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md text-lg transition duration-300"
+                  >
+                    Close
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
