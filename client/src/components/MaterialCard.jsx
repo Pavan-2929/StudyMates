@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { FaTimes } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   getDownloadURL,
   getStorage,
@@ -9,6 +9,8 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { NavLink } from "react-router-dom";
+import { IoMdBookmark } from "react-icons/io";
+import { setUser } from "../redux/auth/authSlice";
 
 const MaterialCard = ({ materialsData, fetchMaterials }) => {
   const [formData, setFormData] = useState({
@@ -20,8 +22,10 @@ const MaterialCard = ({ materialsData, fetchMaterials }) => {
   const [materialId, setMaterialId] = useState(null);
   const [filePercentage, setFilePercentage] = useState(0);
   const [fileError, setFileError] = useState(false);
+  const [isBookmark, setIsBookMark] = useState(false);
 
   const fileRef = useRef();
+  const dispatch = useDispatch();
 
   const currentUser = useSelector((state) => state.currentUser);
 
@@ -103,15 +107,47 @@ const MaterialCard = ({ materialsData, fetchMaterials }) => {
     }
   };
 
+  const handleBookMark = async (id) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/bookmark",
+        { materialId: id },
+        { withCredentials: true }
+      );
+      toggleBookMark();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const toggleBookMark = () => {
+    setIsBookMark(!isBookmark);
+  };
+  console.log(currentUser);
+
   return (
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
         {materialsData.map((material) => (
           <div key={material._id} className="bg-white rounded-lg p-6 shadow-md">
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">
-              {material.title}
-            </h3>
-            <p className="text-gray-600 mb-4">{material.description}</p>
+            <div className="flex justify-between items-center mb-2">
+              <h3 className="text-xl font-semibold text-gray-800 truncate flex-grow max-w-[80%] ml-10">
+                {material.title}
+              </h3>
+              <IoMdBookmark
+                onClick={() => handleBookMark(material._id)}
+                className={`text-3xl ${
+                  currentUser &&
+                  (currentUser.bookMark.includes(material._id) || isBookmark)
+                    ? "text-blue-500"
+                    : "text-gray-300"
+                }`}
+              />
+            </div>
+            <p className="text-gray-600 mb-4 truncate">
+              {material.description}
+            </p>
             <div className="flex justify-between items-center font-bold">
               {currentUser && currentUser.userType === "instructor" ? (
                 <>

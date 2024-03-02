@@ -3,9 +3,11 @@
 @tailwind utilities;
 
 .active {
-  color: red; /* text-red-600 */
-  border-color: red; /* border-red-600 */
-  border-bottom: 2px solid red; /* border-b-2 border-red-600 */
+  color: red; 
+  border-bottom: 2px solid red;
+  border-color: red; 
 }
 
-
+.active:hover {
+  border-bottom: 2px solid red;
+}
