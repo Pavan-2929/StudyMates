@@ -3,11 +3,30 @@
 @tailwind utilities;
 
 .active {
-  color: red; 
+  color: red;
   border-bottom: 2px solid red;
-  border-color: red; 
+  border-color: red;
 }
 
 .active:hover {
   border-bottom: 2px solid red;
+}
+/* Custom scrollbar width */
+.scrollbar-w-12::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Custom scrollbar track color */
+.scrollbar-track-bg::-webkit-scrollbar-track {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 8 20 / var(--tw-bg-opacity));
+}
+
+/* Custom scrollbar thumb color */
+.scrollbar-thumb-bg::-webkit-scrollbar-thumb {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 29 41 / var(--tw-bg-opacity)); /* Example color */
+}
+.bgcolor {
+  background-color: wheat;
 }
