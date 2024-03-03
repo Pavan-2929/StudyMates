@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { FaRegistered } from "react-icons/fa";
 import { IoLogInSharp } from "react-icons/io5";
+import { FaBook } from "react-icons/fa";
 
 function Header() {
   const dispatch = useDispatch();
@@ -54,7 +55,12 @@ function Header() {
             {isLoggedIn ? (
               <>
                 <li className="md:ml-5 xl:mx-5 hover:text-red-600 ">
-                  <NavLink to="/doubts">Doubts</NavLink>
+                  <NavLink to="/doubts">
+                    <div className="flex items-center gap-2">
+                      <FaBook />
+                      Doubts
+                    </div>
+                  </NavLink>
                 </li>
                 <li className="md:ml-5 xl:mx-5 hover:text-red-600">
                   <NavLink to="/activity">Activity</NavLink>

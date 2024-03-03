@@ -10,9 +10,9 @@ const ActivityCard = ({ activity }) => {
   const lastDateFormat = lastDate.toLocaleDateString();
 
   return (
-    <div className="bg-richblack-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 ease-in-out">
+    <div className="bg-blue activitybox rounded-lg overflow-hidden shadow-lg ">
       <div className="p-6">
-        <h1 className="text-3xl font-semibold text-gray-800 mb-4">
+        <h1 className="text-3xl font-semibold heading text-gray-800 mb-4">
           {activity.title}
         </h1>
         <p className="text-gray-600 mb-6">{activity.description}</p>
@@ -28,15 +28,21 @@ const ActivityCard = ({ activity }) => {
             Organizer Name: {activity.organizationEmail}
           </p>
         </div>
+        <div className="mb-4 text-gray-600">
+          <p className="text-sm">
+            Required Memberes: {activity.requiredMembers}
+          </p>
+        </div>
         <div className="flex justify-between text-gray-600 mb-4">
           <p className="text-sm">Start Date: {startingDateFormat}</p>
           <p className="text-sm">End Date: {lastDateFormat}</p>
         </div>
       </div>
-      <div className="mb-5">
+      <div className="mb-5 explore hover:bg-[#314051] text-[#B69507] ">
         <Link
           to={`/activity/${activity._id}`}
-          className="px-4 py-3 block w-full text-white font-semibold uppercase tracking-wide focus:outline-none bg-blue-500 focus:bg-blue-600 hover:bg-blue-600 transition duration-300 ease-in-out"
+          className="font-semibold uppercase tracking-wide 
+        focus:outline-none  transition duration-300 ease-in-out"
         >
           Explore
         </Link>
