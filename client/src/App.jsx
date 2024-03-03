@@ -9,6 +9,7 @@ import SingleDoubt from "./pages/SingleDoubt";
 import Activity from "./pages/Activity";
 import SingleActivity from "./pages/SingleActivity";
 import Admin from "./pages/Admin";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/activity/:id" element={<SingleActivity />} />
           <Route path="/admin" element={<Admin/>} />
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </>
   );
