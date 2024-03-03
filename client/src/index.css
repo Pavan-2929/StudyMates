@@ -3,17 +3,20 @@
 @tailwind utilities;
 
 .active {
-  color: #B69507;
-  border-bottom: 2px solid #B69507;
-  border-color: #B69507;
+  color: #b69507;
+  border-bottom: 2px solid #b69507;
+  border-color: #b69507;
 }
 
 .active:hover {
-  border-bottom: 2px solid #B69507;
+  border-bottom: 2px solid #b69507;
 }
 /* Custom scrollbar width */
 .scrollbar-w-12::-webkit-scrollbar {
   width: 10px;
+}
+.scrollbar-w-9::-webkit-scrollbar {
+  width: 0px;
 }
 
 /* Custom scrollbar track color */
@@ -26,6 +29,12 @@
 .scrollbar-thumb-bg::-webkit-scrollbar-thumb {
   --tw-bg-opacity: 1;
   background-color: rgb(22 29 41 / var(--tw-bg-opacity)); /* Example color */
+  /* richblck: 800px; */
+}
+.scrollbar-thumb-instructbg::-webkit-scrollbar-thumb {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 8 20 / var(--tw-bg-opacity)); /* Example color */
+  /* richblck: 800px; */
 }
 .bgcolor {
   background-color: wheat;
@@ -35,19 +44,18 @@
   font-size: large;
 } */
 
-
-.box{
+.box {
   box-shadow: 6px 6px 4px rgb(80, 82, 84);
 }
-.box2{
-  box-shadow: 3px 3px  rgb(80, 82, 84);
+.box2 {
+  box-shadow: 3px 3px rgb(80, 82, 84);
 }
-.box3{
-  box-shadow: 3px 3px  rgb(239, 217, 154);
+.box3 {
+  box-shadow: 3px 3px rgb(239, 217, 154);
 }
-.box :hover{
+.box :hover {
   font-size: 17px;
 }
-.icon:hover{
-  fill: rgb(234, 223, 26);
+.icon:hover {
+  fill: rgb(234,  223,  26);
 }

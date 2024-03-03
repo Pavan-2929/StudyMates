@@ -1,9 +1,8 @@
 import React from "react";
 import { IoLocation } from "react-icons/io5";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const ActivityCard = ({ activity }) => {
-
   const startingDate = new Date(activity.startingDate);
   const lastDate = new Date(activity.lastDate);
 
@@ -11,7 +10,7 @@ const ActivityCard = ({ activity }) => {
   const lastDateFormat = lastDate.toLocaleDateString();
 
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 ease-in-out">
+    <div className="bg-richblack-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 ease-in-out">
       <div className="p-6">
         <h1 className="text-3xl font-semibold text-gray-800 mb-4">
           {activity.title}
@@ -40,7 +39,10 @@ const ActivityCard = ({ activity }) => {
         </div>
       </div>
       <div className="mb-5">
-        <Link to={`/activity/${activity._id}`} className="px-4 py-3 block w-full text-white font-semibold uppercase tracking-wide focus:outline-none bg-blue-500 focus:bg-blue-600 hover:bg-blue-600 transition duration-300 ease-in-out">
+        <Link
+          to={`/activity/${activity._id}`}
+          className="px-4 py-3 block w-full text-white font-semibold uppercase tracking-wide focus:outline-none bg-blue-500 focus:bg-blue-600 hover:bg-blue-600 transition duration-300 ease-in-out"
+        >
           Explore
         </Link>
       </div>
