@@ -12,7 +12,7 @@ const Activity = () => {
   const fetchAllActivity = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/activity/get"
+        "https://studymates-server.onrender.com/api/activity/get"
       );
       setAllActivity(response.data);
     } catch (error) {
@@ -47,7 +47,7 @@ const Activity = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/activity/create",
+        "https://studymates-server.onrender.com/api/activity/create",
         formData,
         { withCredentials: true }
       );

@@ -87,7 +87,9 @@ const Doubts = () => {
 
   const fetchDoubtsData = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/doubt/get");
+      const response = await axios.get(
+        "https://studymates-server.onrender.com/api/doubt/get"
+      );
       setDoubtData(response.data);
     } catch (error) {
       console.log(error);
@@ -110,7 +112,7 @@ const Doubts = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/doubt/create",
+        "https://studymates-server.onrender.com/api/doubt/create",
         formData,
         { withCredentials: true }
       );
@@ -126,7 +128,7 @@ const Doubts = () => {
   const deleteDoubt = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/doubt/delete/${id}`,
+        `https://studymates-server.onrender.com/api/doubt/delete/${id}`,
         { withCredentials: true }
       );
       console.log(response);
@@ -139,7 +141,7 @@ const Doubts = () => {
   const fetchInstructor = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/get/instructor"
+        "https://studymates-server.onrender.com/api/get/instructor"
       );
 
       console.log(response);

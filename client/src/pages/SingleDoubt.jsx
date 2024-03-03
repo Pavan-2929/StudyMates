@@ -16,7 +16,7 @@ const SingleDoubt = () => {
   const getDoubt = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/doubt/get/${id}`
+        `https://studymates-server.onrender.com/api/doubt/get/${id}`
       );
       setDoubtData(response.data);
       setLoading(false);
@@ -29,7 +29,7 @@ const SingleDoubt = () => {
   const getDoubtUserInfo = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/user/get/${doubtData.userId}`
+        `https://studymates-server.onrender.com/api/user/get/${doubtData.userId}`
       );
       setDoubtUserData(response.data);
     } catch (error) {
@@ -41,7 +41,7 @@ const SingleDoubt = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/comment/create",
+        "https://studymates-server.onrender.com/api/comment/create",
         {
           content,
           doubtId: id,
@@ -58,7 +58,7 @@ const SingleDoubt = () => {
   const fetchComments = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/comment/get/${id}`
+        `https://studymates-server.onrender.com/api/comment/get/${id}`
       );
       setComments(response.data);
     } catch (error) {

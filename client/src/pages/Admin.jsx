@@ -10,7 +10,9 @@ const Admin = () => {
 
   const fetchAllUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/user/all");
+      const response = await axios.get(
+        "https://studymates-server.onrender.com/api/user/all"
+      );
       setUsers(response.data);
     } catch (error) {
       console.log(error);

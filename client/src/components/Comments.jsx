@@ -10,7 +10,7 @@ const Comments = ({ comment, fetchComments }) => {
   const fetchCommentUser = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/user/get/${comment.userId}`
+        `https://studymates-server.onrender.com/api/user/get/${comment.userId}`
       );
       setCommentUser(response.data);
     } catch (error) {
@@ -21,7 +21,7 @@ const Comments = ({ comment, fetchComments }) => {
   const deleteComment = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/comment/delete/${id}`
+        `https://studymates-server.onrender.com/api/comment/delete/${id}`
       );
       fetchComments();
     } catch (error) {

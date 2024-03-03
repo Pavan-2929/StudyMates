@@ -15,7 +15,7 @@ const ActivityCard = ({ activity, fetchAllActivity }) => {
   const deleteActivity = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/activity/delete/${id}`
+        `https://studymates-server.onrender.com/api/activity/delete/${id}`
       );
 
       console.log(response);

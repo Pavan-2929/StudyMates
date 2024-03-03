@@ -23,7 +23,7 @@ const Instuctor = ({ item, toggleModal }) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/sendmail",
+        "https://studymates-server.onrender.com/api/sendmail",
 
         formData,
 

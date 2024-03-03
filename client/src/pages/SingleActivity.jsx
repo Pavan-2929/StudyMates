@@ -23,7 +23,7 @@ const SingleActivity = () => {
   const getActivity = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/activity/get/${id}`
+        `https://studymates-server.onrender.com/api/activity/get/${id}`
       );
       setActivity(response.data);
     } catch (error) {
@@ -35,7 +35,7 @@ const SingleActivity = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/participant/create",
+        "https://studymates-server.onrender.com/api/participant/create",
         formData,
         { withCredentials: true }
       );
@@ -50,7 +50,7 @@ const SingleActivity = () => {
   const fetchParticipants = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/participant/get/${id}`
+        `https://studymates-server.onrender.com/api/participant/get/${id}`
       );
       // console.log(response);
       setAllParticipants(response.data);
@@ -62,7 +62,7 @@ const SingleActivity = () => {
   const fetchIsRegistered = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/participant/get/user/${currentUser._id}`
+        `https://studymates-server.onrender.com/api/participant/get/user/${currentUser._id}`
       );
 
       if (response.data.length > 0) {

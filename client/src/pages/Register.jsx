@@ -26,7 +26,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/register",
+        "https://studymates-server.onrender.com/api/auth/register",
         formData,
         { withCredentials: true }
       );
