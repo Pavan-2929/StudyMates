@@ -5,14 +5,85 @@ import { FaTimes } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { IoIosArrowDown } from "react-icons/io";
 import "../index.css";
+import Instuctor from "../components/Instuctor";
 const Doubts = () => {
   const currentUser = useSelector((state) => state.currentUser);
   const [doubtData, setDoubtData] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [allInstructors, setAllInstructors] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
     description: "",
   });
+
+  const example = [
+    {
+      teacher: "john doe",
+      about:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
+      type: "maths teacher",
+    },
+    {
+      teacher: "john doe",
+      about:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
+      type: "maths teacher",
+    },
+    {
+      teacher: "john doe",
+      about:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
+      type: "maths teacher",
+    },
+    {
+      teacher: "john doe",
+      about:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
+      type: "maths teacher",
+    },
+    {
+      teacher: "john doe",
+      about:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
+      type: "maths teacher",
+    },
+    {
+      teacher: "john doe",
+      about:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
+      type: "maths teacher",
+    },
+    {
+      teacher: "john doe",
+      about:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
+      type: "maths teacher",
+    },
+    {
+      teacher: "john doe",
+      about:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
+      type: "maths teacher",
+    },
+    {
+      teacher: "john doe",
+      about:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
+      type: "maths teacher",
+    },
+    {
+      teacher: "john doe",
+      about:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
+      type: "maths teacher",
+    },
+    {
+      teacher: "john doe",
+      about:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
+      type: "maths teacher",
+    },
+  ];
 
   const fetchDoubtsData = async () => {
     try {
@@ -64,6 +135,23 @@ const Doubts = () => {
       console.log(error);
     }
   };
+
+  const fetchInstructor = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:3000/api/get/instructor"
+      );
+
+      console.log(response);
+      setAllInstructors(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchInstructor();
+  }, []);
 
   return (
     <div className="container mx-auto md:px-14 mb-10">
@@ -125,10 +213,10 @@ const Doubts = () => {
               </div>
             ))}
             {showModal && (
-              <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
-                <div className="bg-gray-200 p-6 md:p-10 rounded-lg shadow-lg md:w-[50vw] w-full">
+              <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-opacity-50 z-50">
+                <div className="bg-richblack-700 p-6 md:p-10 rounded-lg shadow-lg md:w-[50vw] w-full">
                   <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-2xl md:text-3xl font-semibold text-center">
+                    <h2 className="text-2xl md:text-3xl font-semibold text-center ">
                       Ask doubt
                     </h2>
                     <span
@@ -138,8 +226,11 @@ const Doubts = () => {
                       <FaTimes />
                     </span>
                   </div>
-                  <form onSubmit={createNewDoubt}>
-                    <div className="mb-6">
+                  <form
+                    className="text-richblack-900"
+                    onSubmit={createNewDoubt}
+                  >
+                    <div className="mb-6 ">
                       <input
                         value={formData.title}
                         onChange={handleChange}
@@ -162,7 +253,7 @@ const Doubts = () => {
                     <div className="flex justify-end">
                       <button
                         type="submit"
-                        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-lg transition duration-300 mr-2"
+                        className="bg-yellow-25 hover:bg-blue-600 text-richblack-900 px-4 py-2 rounded-md text-lg transition duration-300 mr-2"
                       >
                         Submit
                       </button>
@@ -186,6 +277,29 @@ const Doubts = () => {
           alt="img"
           className="sm:w-[50%] h-[90vh] w-full px-5 sm:object-cover"
         />
+      </div>
+      <div className=" sm:h-[40vh] flex flex-col items-center justify-center my-5 ">
+        {" "}
+        <h1 className=" text-4xl text-center my-5">Our Faculties</h1>{" "}
+        <p className=" text-richblack-100 text-center sm:w-full w-[90%] sm:mb-0 mb-4 ">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
+          possimus minima voluptatibus mollitia dolore laborum excepturi
+          suscipit non sit deleniti.
+        </p>
+      </div>
+      <div
+        className="h-[50vh] w-full flex flex-row scrollbar-w-9 scrollbar-track-bg
+        scrollbar-thumb-instructbg items-center pl-5  gap-5 overflow-auto overflow-x-scroll bg-richblack-800 "
+      >
+        {allInstructors.map((item, index) => {
+          return (
+            <Instuctor
+              toggleModal={toggleModal}
+              item={item}
+              key={index}
+            />
+          );
+        })}
       </div>
     </div>
   );

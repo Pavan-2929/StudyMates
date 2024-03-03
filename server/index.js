@@ -9,6 +9,7 @@ import doubtRouter from "./routes/Doubt.routes.js";
 import commentRouter from "./routes/comment.routes.js";
 import activityRouter from "./routes/activity.routes.js";
 import participantRouter from "./routes/participant.routes.js";
+import mailRouter from "./routes/mail.routes.js";
 
 const app = express();
 app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
@@ -27,7 +28,7 @@ mongoose
     console.log("MongoDB Connected");
   })
   .catch((error) => console.log(error));
-
+app.use("/api", mailRouter);
 app.use("/api/auth", authRouter);
 app.use("/api", userRotuer);
 app.use("/api/material", materialRouter);

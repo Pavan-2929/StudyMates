@@ -79,12 +79,12 @@ export const createBookmark = async (req, res, next) => {
   }
 };
 
-export const getAllUser = async (req, res, next) => {
+export const getInstructor = async (req, res, next) => {
   try {
-    const allUsers = await User.find();
+    const users = await User.find({ userType: "instructor" });
 
-    res.status(200).json(allUsers)
+    res.status(200).json(users);
   } catch (error) {
-    next(error)
+    console.log(error);
   }
-}
+};
