@@ -87,7 +87,7 @@ const SingleActivity = () => {
         </div>
         <div className="flex items-center mb-4 text-gray-600">
           <IoPerson className="mr-2" />
-          <p>Required Members: {activity.requiredMembers}</p>
+          <p>Required Members: {activity.requiredMembers - allParticipants.length}</p>
         </div>
         <div className="flex items-center mb-4 text-gray-600">
           <IoPerson className="mr-2" />
@@ -132,7 +132,7 @@ const SingleActivity = () => {
 
       {modal && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white p-6 md:p-10 rounded-lg shadow-lg md:w-[50vw] w-full">
+          <div className="bg-black p-6 md:p-10 rounded-lg shadow-lg md:w-[50vw] w-full">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl md:text-3xl font-semibold">
                 Check your credentials

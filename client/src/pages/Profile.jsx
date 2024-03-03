@@ -11,6 +11,7 @@ import { app } from "../firebase";
 import toast from "react-hot-toast";
 import { logout, setUser } from "../redux/auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import AdminModal from "../components/AdminModal";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -27,10 +28,15 @@ const Profile = () => {
   const [image, setImage] = useState(undefined);
   const [imagePercentage, setImagePercentage] = useState(0);
   const [imageError, setImageError] = useState(false);
+  const [adminToggle, setAdminToggle] = useState(false)
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
+
+  const toggleModal = () => {
+    setAdminToggle(!adminToggle)
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -272,6 +278,15 @@ const Profile = () => {
             Update Profile
           </button>
         </div>
+        <div className="mb-4 flex justify-center">
+          <button
+            type="button"
+            onClick={toggleModal}
+            className="bg-[#e93535] hover:bg-[#f84f4f] box2 text-white px-4 py-2 rounded-full text-lg transition duration-300"
+          >
+            Admin
+          </button>
+        </div>
         <div className="flex justify-between mt-4 text-[1.2rem]">
           <div
             className="cursor-pointer underline text-yellow-500"
@@ -287,6 +302,9 @@ const Profile = () => {
           </div>
         </div>
       </form>
+      <div>
+        {adminToggle && <AdminModal toggleModal={toggleModal}/>}
+      </div>
     </div>
   );
 };

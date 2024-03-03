@@ -8,6 +8,7 @@ import Doubts from "./pages/Doubts";
 import SingleDoubt from "./pages/SingleDoubt";
 import Activity from "./pages/Activity";
 import SingleActivity from "./pages/SingleActivity";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/doubts/:id" element={<SingleDoubt />} />
           <Route path="/activity" element={<Activity />} />
           <Route path="/activity/:id" element={<SingleActivity />} />
+          <Route path="/admin" element={<Admin/>} />
         </Routes>
       </BrowserRouter>
     </>

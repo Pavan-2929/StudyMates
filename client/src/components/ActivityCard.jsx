@@ -28,11 +28,6 @@ const ActivityCard = ({ activity }) => {
             Organizer Name: {activity.organizationEmail}
           </p>
         </div>
-        <div className="mb-4 text-gray-600">
-          <p className="text-sm">
-            Required Memberes: {activity.requiredMembers}
-          </p>
-        </div>
         <div className="flex justify-between text-gray-600 mb-4">
           <p className="text-sm">Start Date: {startingDateFormat}</p>
           <p className="text-sm">End Date: {lastDateFormat}</p>
