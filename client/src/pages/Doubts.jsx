@@ -173,8 +173,7 @@ const Doubts = () => {
           <h1 className=" text-left text-4xl">Doubt Questions</h1>
           <div className="h-[30px]"></div>
           <p className=" w-[70%] text-slate-300 text-justify   ">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
-            unde quis! Animi quas totam
+            Feel free to ask your doubt related yout Curriculum to your faculty.
           </p>
           <div className="flex flex-col mt-5  overflow-y-scroll w-full scrollbar-w-12 scrollbar-track-bg h-[90vh] scrollbar-thumb-bg">
             {doubtData.map((doubt, index) => (
@@ -282,9 +281,9 @@ const Doubts = () => {
         {" "}
         <h1 className=" text-4xl text-center my-5">Our Faculties</h1>{" "}
         <p className=" text-richblack-100 text-center sm:w-full w-[90%] sm:mb-0 mb-4 ">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-          possimus minima voluptatibus mollitia dolore laborum excepturi
-          suscipit non sit deleniti.
+          In this faculty list, students can directly communicate with
+          individual faculty members to resolve their academic
+          doubts and inquiries.
         </p>
       </div>
       <div
@@ -293,11 +292,7 @@ const Doubts = () => {
       >
         {allInstructors.map((item, index) => {
           return (
-            <Instuctor
-              toggleModal={toggleModal}
-              item={item}
-              key={index}
-            />
+            <Instuctor toggleModal={toggleModal} item={item} key={index} />
           );
         })}
       </div>

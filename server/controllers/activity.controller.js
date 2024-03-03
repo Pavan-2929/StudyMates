@@ -41,3 +41,13 @@ export const getActivity = async (req, res, next) => {
     console.log(error);
   }
 };
+
+export const deleteActivity = async (req, res, next) => {
+  try {
+    await Activity.findByIdAndDelete(req.params.id);
+
+    res.status(200).json("activity deleted");
+  } catch (error) {
+    console.log(error);
+  }
+};

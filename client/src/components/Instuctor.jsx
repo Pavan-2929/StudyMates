@@ -23,12 +23,13 @@ const Instuctor = ({ item, toggleModal }) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/sendmail",
-        {
-          formData,
-        },
+        "http://localhost:3000/api/sendmail",
+
+        formData,
+
         { withCredentials: true }
       );
+      setShowModal(false)
       setIsLoading(true);
 
       if (response) {
@@ -58,10 +59,7 @@ const Instuctor = ({ item, toggleModal }) => {
             Submit your doubt by filling below form
           </p>
           <p className=" text-richblack-200">{item.userType}</p>
-          <Link
-            onClick={() => setShowModal(true)}
-            className=" mt-1  underline"
-          >
+          <Link onClick={() => setShowModal(true)} className=" mt-1  underline">
             Ask doubt personally
           </Link>
         </div>
@@ -79,10 +77,7 @@ const Instuctor = ({ item, toggleModal }) => {
                   <FaTimes />
                 </span>
               </div>
-              <form
-                className="text-richblack-900"
-                onSubmit={submitHandler}
-              >
+              <form className="text-richblack-900" onSubmit={submitHandler}>
                 <div className="mb-6 ">
                   <input
                     value={formData.title}

@@ -109,7 +109,11 @@ const SingleDoubt = () => {
             <ul>
               {comments &&
                 comments.map((comment) => (
-                  <Comments key={comment._id} comment={comment} fetchComments={fetchComments}/>
+                  <Comments
+                    key={comment._id}
+                    comment={comment}
+                    fetchComments={fetchComments}
+                  />
                 ))}
             </ul>
 
@@ -117,7 +121,7 @@ const SingleDoubt = () => {
               <textarea
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
-                className="w-full border rounded-md p-2"
+                className="w-full p-2  text-white focus:outline-none focus:border-blue-500 rounded-sm bg-richblack-700 "
                 rows="4"
                 placeholder="Add a comment..."
               ></textarea>

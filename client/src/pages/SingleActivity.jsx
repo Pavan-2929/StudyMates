@@ -12,11 +12,13 @@ const SingleActivity = () => {
   const currentUser = useSelector((state) => state.currentUser);
   const [modal, setModal] = useState(false);
   const [formData, setFormData] = useState({
+    userId: currentUser._id,
     participantsName: currentUser.username,
     participantsEmail: currentUser.email,
     activityId: id,
   });
   const [allParticipants, setAllParticipants] = useState([]);
+  const [isRegistered, setIsRegistered] = useState(false);
 
   const getActivity = async () => {
     try {
@@ -37,9 +39,9 @@ const SingleActivity = () => {
         formData,
         { withCredentials: true }
       );
-
+      fetchIsRegistered();
+      toggleModal();
       console.log(response);
-      // Optionally update state or show a success message
     } catch (error) {
       console.error("Error creating participant:", error);
     }
@@ -50,16 +52,33 @@ const SingleActivity = () => {
       const response = await axios.get(
         `http://localhost:3000/api/participant/get/${id}`
       );
-      console.log(response);
+      // console.log(response);
       setAllParticipants(response.data);
     } catch (error) {
       console.error("Error fetching participants:", error);
     }
   };
 
+  const fetchIsRegistered = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/api/participant/get/user/${currentUser._id}`
+      );
+
+      if (response.data.length > 0) {
+        setIsRegistered(true);
+      } else {
+        setIsRegistered(false);
+      }
+    } catch (error) {
+      console.error("Error fetching registration status:", error);
+    }
+  };
+
   useEffect(() => {
     getActivity();
     fetchParticipants();
+    fetchIsRegistered();
   }, []);
 
   const toggleModal = () => {
@@ -67,13 +86,13 @@ const SingleActivity = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto px-4 py-8 mt-10">
-      <div className="bg-gray-200 rounded p-6">
+    <div className="w-full mx-auto px-4 py-8 mt-2">
+      <div className="bg-gray-200 rounded p-6 border-b-2 border-white ">
         <h1 className="text-3xl font-bold text-gray-800 mb-4">
           {activity.title}
         </h1>
         <p className="text-gray-600 mb-4">{activity.description}</p>
-        <div className="flex items-center text-gray-600 mb-4">
+        <div className="flex items-center text-gray-600 mb-4 ">
           <IoLocation className="mr-2" />
           <p>{activity.location}</p>
         </div>
@@ -87,7 +106,10 @@ const SingleActivity = () => {
         </div>
         <div className="flex items-center mb-4 text-gray-600">
           <IoPerson className="mr-2" />
-          <p>Required Members: {activity.requiredMembers - allParticipants.length}</p>
+          <p>
+            Required Members:{" "}
+            {activity.requiredMembers - allParticipants.length}
+          </p>
         </div>
         <div className="flex items-center mb-4 text-gray-600">
           <IoPerson className="mr-2" />
@@ -98,7 +120,7 @@ const SingleActivity = () => {
           <p>Organizer Email: {activity.organizationEmail}</p>
         </div>
       </div>
-      {currentUser && currentUser.userType === "student" && (
+      {currentUser && currentUser.userType === "student" && !isRegistered && (
         <div className="mt-4 flex justify-between items-center">
           <h1 className="text-xl font-semibold mb-2">
             Want to Participate in this Event
@@ -112,14 +134,20 @@ const SingleActivity = () => {
         </div>
       )}
 
+      {isRegistered && (
+        <div className="text-center text-2xl mt-5">
+          <h1>You are already registered</h1>
+        </div>
+      )}
+
       {currentUser && currentUser.userType === "instructor" && (
         <div className="mt-4">
-          <h1 className="text-xl font-semibold mb-2">
+          <h1 className="text-xl font-semibold my-5">
             All Students who participated in this activity
           </h1>
           {allParticipants.map((participant, index) => (
-            <div key={index} className="bg-gray-200 rounded p-3 mb-2">
-              <p className="text-gray-800 font-semibold">
+            <div key={index} className="bg-[#122137] rounded p-3 mb-2">
+              <p className="text-gray-100 font-semibold">
                 Name: {participant.participantsName}
               </p>
               <p className="text-gray-600">
@@ -130,9 +158,15 @@ const SingleActivity = () => {
         </div>
       )}
 
+      {allParticipants && allParticipants.length === 0 && (
+        <div className="text-center text-2xl mt-5">
+          <h1>Currently no student is registered</h1>
+        </div>
+      )}
+
       {modal && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-black p-6 md:p-10 rounded-lg shadow-lg md:w-[50vw] w-full">
+          <div className="bg-[#122137] p-6 md:p-10 rounded-lg shadow-lg md:w-[50vw] w-full">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl md:text-3xl font-semibold">
                 Check your credentials
@@ -149,7 +183,7 @@ const SingleActivity = () => {
                 <input
                   id="title"
                   type="text"
-                  className="w-full px-4 py-3 border rounded-md text-lg"
+                  className="w-full p-3  text-white focus:outline-none focus:border-blue-500 rounded-sm bg-richblack-700 "
                   placeholder="Doubt Title"
                   value={currentUser.username}
                   readOnly
@@ -159,7 +193,7 @@ const SingleActivity = () => {
                 <input
                   id="description"
                   type="text"
-                  className="w-full px-4 py-3 border rounded-md text-lg"
+                  className="w-full p-3 text-white focus:outline-none focus:border-blue-500 rounded-sm bg-richblack-700 "
                   placeholder="Brief description about doubt"
                   value={currentUser.email}
                   readOnly

@@ -111,7 +111,7 @@ const MaterialCard = ({ materialsData, fetchMaterials }) => {
             <h3 className="text-xl font-semibold text-yellow-400 mb-2">
               {material.title}
             </h3>
-            <p className="text-white-600 mb-4">{material.description}</p>
+            <p className="text-white-600 mb-4 text-white">{material.description}</p>
             <div className="flex justify-between items-center font-bold">
               {currentUser && currentUser.userType === "instructor" ? (
                 <>

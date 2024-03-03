@@ -2,6 +2,7 @@ import express from "express";
 import verifyToken from "../middlewares/verifyToken.js";
 import {
   createBookmark,
+  getAllUser,
   getInstructor,
   getUserById,
   updateUser,
@@ -15,5 +16,6 @@ router.post("/user/update", verifyToken, updateUser);
 router.get("/user/get/:id", getUserById);
 router.post("/bookmark", verifyToken, createBookmark);
 router.get("/get/instructor", getInstructor);
+router.get("/user/all", getAllUser)
 
 export default router;

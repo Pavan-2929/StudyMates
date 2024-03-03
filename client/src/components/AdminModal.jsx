@@ -33,7 +33,7 @@ const AdminModal = ({ toggleModal }) => {
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
             <input
-              type="passwird"
+              type="password"
               className="w-full p-2  text-white focus:outline-none focus:border-blue-500 rounded-sm bg-richblack-700 "
               placeholder="Enter your passcode"
               onChange={(e) => setPasscode(e.target.value)}

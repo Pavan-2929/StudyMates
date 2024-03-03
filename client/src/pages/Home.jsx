@@ -129,20 +129,17 @@ const Home = () => {
           <h2 className="text-xl font-semibold mb-4">
             Type: {userData.userType}
           </h2>
-          <p className="text-lg">
+          <p className="text-lg text-white">
             Welcome back to our awesome platform. Explore and enjoy your time!
           </p>
-          
         </div>
       ) : (
         <div className="bg-gray-200 p-6 rounded-lg shadow-lg heading">
           <h1 className="text-3xl font-semibold mb-4">
             Welcome to <span className="platform">StudyMates</span>
           </h1>
-          
-          
-          
-          <p className="text-lg">
+
+          <p className="text-lg text-white">
             Sign in or register to access exclusive features and content.
           </p>
           <div className="mt-8 flex justify-center">
@@ -150,7 +147,7 @@ const Home = () => {
               to="/login"
               className="bg-yellow-400 hover:bg-yellow-300 box3 text-black px-4 py-2 rounded-full text-lg mr-4 transition duration-300"
             >
-             <b className="text-black">Login</b> 
+              <b className="text-black">Login</b>
             </NavLink>
             <NavLink
               to="/register"
@@ -170,7 +167,7 @@ const Home = () => {
           <div>
             <button
               onClick={toggleModal}
-              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md text-md m-4 transition duration-300"
+              className="bg-[#212F3C] hover:bg-[#2d4052] text-white px-4 py-2 rounded-full text-lg transition duration-300"
             >
               Add Material
             </button>
@@ -186,7 +183,7 @@ const Home = () => {
 
       {showModal && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-white bg-opacity-75">
-          <div className="bg-gray-200 md:p-10 p-4 rounded-lg shadow-lg md:w-[50vw] w-full">
+          <div className="bg-[#122137] md:p-10 p-4 rounded-lg shadow-lg md:w-[50vw] w-full">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl md:text-3xl font-semibold">
                 Add new Material
@@ -204,7 +201,7 @@ const Home = () => {
                   onChange={handleChange}
                   id="title"
                   type="text"
-                  className="w-full px-4 py-3 border rounded-md text-lg"
+                  className="w-full p-2  text-white focus:outline-none focus:border-blue-500 rounded-sm bg-richblack-700 "
                   placeholder="Material Name"
                 />
               </div>
@@ -213,7 +210,7 @@ const Home = () => {
                   id="description"
                   onChange={handleChange}
                   type="text"
-                  className="w-full px-4 py-3 border rounded-md text-lg"
+                  className="w-full p-2  text-white focus:outline-none focus:border-blue-500 rounded-sm bg-richblack-700 "
                   placeholder="Material Description"
                 />
               </div>
@@ -222,9 +219,9 @@ const Home = () => {
                   <button
                     type="button"
                     onClick={() => fileRef.current.click()}
-                    className="w-full bg-red-500 py-2 px-4 rounded-md text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                    className="bg-yellow-300 text-yellow-700 rounded-full py-1 px-3 mr-2 mb-2"
                   >
-                    Upload PDF File
+                    <b>Upload PDF File</b>
                   </button>
                   <p className="mt-5 text-[1.2rem]">
                     {fileError ? (
@@ -271,7 +268,7 @@ const Home = () => {
                 <button
                   type="button"
                   onClick={toggleModal}
-                  className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md text-lg transition duration-300"
+                  className="bg-[#212F3C] hover:bg-[#2d4052] text-white px-4 py-2 rounded-full text-lg transition duration-300"
                 >
                   Close
                 </button>
@@ -284,4 +281,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Home;
