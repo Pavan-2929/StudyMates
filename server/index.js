@@ -12,7 +12,9 @@ import participantRouter from "./routes/participant.routes.js";
 import mailRouter from "./routes/mail.routes.js";
 
 const app = express();
-app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
+app.use(
+  cors({ credentials: true, origin: "https://studymates-2929.onrender.com" })
+);
 app.use(express.json());
 dotenv.config();
 
