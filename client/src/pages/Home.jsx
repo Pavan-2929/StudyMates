@@ -132,16 +132,13 @@ const Home = () => {
           <p className="text-lg">
             Welcome back to our awesome platform. Explore and enjoy your time!
           </p>
-          
         </div>
       ) : (
         <div className="bg-gray-200 p-6 rounded-lg shadow-lg heading">
           <h1 className="text-3xl font-semibold mb-4">
             Welcome to <span className="platform">StudyMates</span>
           </h1>
-          
-          
-          
+
           <p className="text-lg">
             Sign in or register to access exclusive features and content.
           </p>
@@ -150,7 +147,7 @@ const Home = () => {
               to="/login"
               className="bg-yellow-400 hover:bg-yellow-300 box3 text-black px-4 py-2 rounded-full text-lg mr-4 transition duration-300"
             >
-             <b className="text-black">Login</b> 
+              <b className="text-black">Login</b>
             </NavLink>
             <NavLink
               to="/register"
@@ -280,8 +277,9 @@ const Home = () => {
           </div>
         </div>
       )}
+      <div className="w-full h-[100px] hidden sm:block"></div>
     </div>
   );
 };
 
-export default Home;
+export default Home;
