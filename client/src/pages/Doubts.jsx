@@ -169,18 +169,18 @@ const Doubts = () => {
       </div>
 
       <div className="flex sm:flex-row flex-col items-center justify-center ">
-        <div className="sm:w-[50%] w-full  flex flex-col items-center">
+        <div className="sm:w-[2/3] w-full  flex flex-col items-center">
           <h1 className=" text-left text-4xl">Doubt Questions</h1>
           <div className="h-[30px]"></div>
           <p className=" w-[70%] text-slate-300 text-justify   ">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
             unde quis! Animi quas totam
           </p>
-          <div className="flex flex-col mt-5  overflow-y-scroll w-[70%] scrollbar-w-12 scrollbar-track-bg h-[90vh] scrollbar-thumb-bg">
+          <div className="flex flex-col mt-5  overflow-y-scroll w-full scrollbar-w-12 scrollbar-track-bg h-[90vh] scrollbar-thumb-bg">
             {doubtData.map((doubt, index) => (
               <div
                 key={index}
-                className=" bg-richblack-800 outline-1 outline-pure-greys-25 m-4 rounded-lg shadow-md"
+                className=" bg-richblack-800 outline-1 outline-pure-greys-25 m-4 rounded-lg shadow-md shadow-richblack-600"
               >
                 {/* <img
                   src={doubt.image}
@@ -275,7 +275,7 @@ const Doubts = () => {
         <img
           src="https://thumbs.dreamstime.com/b/vertical-business-background-group-businesspeople-around-meeting-table-having-discussion-office-170709724.jpg"
           alt="img"
-          className="sm:w-[50%] h-[90vh] w-full px-5 sm:object-cover"
+          className="sm:w-[1/3] h-[90vh] w-full px-5 sm:object-cover"
         />
       </div>
       <div className=" sm:h-[40vh] flex flex-col items-center justify-center my-5 ">
