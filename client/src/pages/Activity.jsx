@@ -3,6 +3,7 @@ import axios from "axios";
 import ActivityCard from "../components/ActivityCard";
 import { useSelector } from "react-redux";
 import { FaTimes } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const Activity = () => {
   const [allActivity, setAllActivity] = useState([]);
@@ -52,7 +53,6 @@ const Activity = () => {
         { withCredentials: true }
       );
       console.log(response.data);
-      // Reset form data after successful submission
       setFormData({
         title: "",
         description: "",
@@ -63,16 +63,27 @@ const Activity = () => {
         organizationName: "",
         organizationEmail: "",
       });
-
+      toast.success("Activity created Successfully", {
+        style: {
+          borderRadius: "10px",
+          background: "#4CAF50",
+          color: "#fff",
+        },
+      });
       toggleModal();
 
       fetchAllActivity();
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong", {
+        style: {
+          borderRadius: "10px",
+          background: "#F44336",
+          color: "#fff",
+        },
+      });
     }
   };
-
-  console.log(formData);
 
   return (
     <div className="container mx-auto px-4 mt-7">

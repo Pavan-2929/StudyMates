@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const AdminModal = ({ toggleModal }) => {
   const [passcode, setPasscode] = useState("");
@@ -12,8 +13,22 @@ const AdminModal = ({ toggleModal }) => {
       if (Admin === passcode) {
         navigate("/admin");
       }
+      toast.success("Activity created Successfully", {
+        style: {
+          borderRadius: "10px",
+          background: "#4CAF50",
+          color: "#fff",
+        },
+      });
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong", {
+        style: {
+          borderRadius: "10px",
+          background: "#F44336",
+          color: "#fff",
+        },
+      });
     }
   };
   return (

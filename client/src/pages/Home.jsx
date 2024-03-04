@@ -5,7 +5,7 @@ import { setUser } from "../redux/auth/authSlice";
 import { NavLink } from "react-router-dom";
 import MaterialCard from "../components/MaterialCard";
 import { FaTimes } from "react-icons/fa";
-// import "./Home.css";
+import toast from "react-hot-toast";
 import {
   getDownloadURL,
   getStorage,
@@ -55,12 +55,25 @@ const Home = () => {
         "https://studymates-server.onrender.com/api/material/create",
         formData
       );
-
+      toast.success("Material Added Successfully", {
+        style: {
+          borderRadius: "10px",
+          background: "#4CAF50",
+          color: "#fff",
+        },
+      });
       console.log(response);
       fetchMaterials();
       setShowModal(!showModal);
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong", {
+        style: {
+          borderRadius: "10px",
+          background: "#F44336",
+          color: "#fff",
+        },
+      });
     }
   };
 

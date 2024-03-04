@@ -9,6 +9,7 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { NavLink } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const MaterialCard = ({ materialsData, fetchMaterials }) => {
   const [formData, setFormData] = useState({
@@ -61,10 +62,24 @@ const MaterialCard = ({ materialsData, fetchMaterials }) => {
         `https://studymates-server.onrender.com/api/material/update/${id}`,
         formData
       );
+      toast.success("Material updated", {
+        style: {
+          borderRadius: "10px",
+          background: "#4CAF50",
+          color: "#fff",
+        },
+      });
       toggleModal();
       fetchMaterials();
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong", {
+        style: {
+          borderRadius: "10px",
+          background: "#F44336",
+          color: "#fff",
+        },
+      });
     }
   };
 
@@ -109,11 +124,16 @@ const MaterialCard = ({ materialsData, fetchMaterials }) => {
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
         {materialsData.map((material) => (
-          <div key={material._id} className="bg-[#122137] box rounded-lg p-6 shadow-md">
+          <div
+            key={material._id}
+            className="bg-[#122137] box rounded-lg p-6 shadow-md"
+          >
             <h3 className="text-xl font-semibold text-yellow-400 mb-2">
               {material.title}
             </h3>
-            <p className="text-white-600 mb-4 text-white">{material.description}</p>
+            <p className="text-white-600 mb-4 text-white">
+              {material.description}
+            </p>
             <div className="flex justify-between items-center font-bold">
               {currentUser && currentUser.userType === "instructor" ? (
                 <>
@@ -154,7 +174,7 @@ const MaterialCard = ({ materialsData, fetchMaterials }) => {
                     target="_blan-blue-500k"
                     rel="noopener noreferrer"
                   >
-                      <b className="text-black"> Link </b>
+                    <b className="text-black"> Link </b>
                   </a>
                 </div>
               )}

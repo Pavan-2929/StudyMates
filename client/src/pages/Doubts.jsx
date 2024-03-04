@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 import { IoIosArrowDown } from "react-icons/io";
 import "../index.css";
 import Instuctor from "../components/Instuctor";
+import toast from "react-hot-toast";
+
 const Doubts = () => {
   const currentUser = useSelector((state) => state.currentUser);
   const [doubtData, setDoubtData] = useState([]);
@@ -14,76 +16,7 @@ const Doubts = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-  });
-
-  const example = [
-    {
-      teacher: "john doe",
-      about:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
-      type: "maths teacher",
-    },
-    {
-      teacher: "john doe",
-      about:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
-      type: "maths teacher",
-    },
-    {
-      teacher: "john doe",
-      about:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
-      type: "maths teacher",
-    },
-    {
-      teacher: "john doe",
-      about:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
-      type: "maths teacher",
-    },
-    {
-      teacher: "john doe",
-      about:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
-      type: "maths teacher",
-    },
-    {
-      teacher: "john doe",
-      about:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
-      type: "maths teacher",
-    },
-    {
-      teacher: "john doe",
-      about:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
-      type: "maths teacher",
-    },
-    {
-      teacher: "john doe",
-      about:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
-      type: "maths teacher",
-    },
-    {
-      teacher: "john doe",
-      about:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
-      type: "maths teacher",
-    },
-    {
-      teacher: "john doe",
-      about:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
-      type: "maths teacher",
-    },
-    {
-      teacher: "john doe",
-      about:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, ",
-      type: "maths teacher",
-    },
-  ];
+  })
 
   const fetchDoubtsData = async () => {
     try {
@@ -117,11 +50,23 @@ const Doubts = () => {
         { withCredentials: true }
       );
       fetchDoubtsData();
-
-      console.log(response);
+      toast.success("New doubt created Successfully", {
+        style: {
+          borderRadius: "10px",
+          background: "#4CAF50",
+          color: "#fff",
+        },
+      });
       toggleModal();
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong", {
+        style: {
+          borderRadius: "10px",
+          background: "#F44336",
+          color: "#fff",
+        },
+      });
     }
   };
 
@@ -148,6 +93,13 @@ const Doubts = () => {
       setAllInstructors(response.data);
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong", {
+        style: {
+          borderRadius: "10px",
+          background: "#F44336",
+          color: "#fff",
+        },
+      });
     }
   };
 
@@ -284,8 +236,8 @@ const Doubts = () => {
         <h1 className=" text-4xl text-center my-5">Our Faculties</h1>{" "}
         <p className=" text-richblack-100 text-center sm:w-full w-[90%] sm:mb-0 mb-4 ">
           In this faculty list, students can directly communicate with
-          individual faculty members to resolve their academic
-          doubts and inquiries.
+          individual faculty members to resolve their academic doubts and
+          inquiries.
         </p>
       </div>
       <div

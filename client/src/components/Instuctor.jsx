@@ -2,13 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaQuoteLeft, FaQuoteRight, FaSadCry, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
-// {
-// 	teacher: "john doe",
-// 	about:
-// 	  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt hic et quo incidunt, quidem voluptas saepe ipsa recusandae repudiandae porro consequuntur mollitia magni voluptates ullam repellat cum debitis autem!",
-// 	type: "maths teacher",
-//   },
+import toast from "react-hot-toast";
 
 const Instuctor = ({ item, toggleModal }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,16 +23,37 @@ const Instuctor = ({ item, toggleModal }) => {
 
         { withCredentials: true }
       );
-      setShowModal(false)
+      toast.success("Your email is sended", {
+        style: {
+          borderRadius: "10px",
+          background: "#4CAF50",
+          color: "#fff",
+        },
+      });
+      setShowModal(false);
       setIsLoading(true);
 
       if (response) {
         console.log(response);
         setIsLoading(false);
+        toast.error("Something went wrong", {
+          style: {
+            borderRadius: "10px",
+            background: "#F44336",
+            color: "#fff",
+          },
+        });
       }
     } catch (error) {
       setIsLoading(false);
       console.log(error);
+      toast.error("Something went wrong", {
+        style: {
+          borderRadius: "10px",
+          background: "#F44336",
+          color: "#fff",
+        },
+      });
     }
   };
 

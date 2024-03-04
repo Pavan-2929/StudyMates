@@ -5,6 +5,7 @@ import { IoLocation, IoPerson } from "react-icons/io5";
 import { FiCalendar } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { FaTimes } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const SingleActivity = () => {
   const { id } = useParams();
@@ -39,11 +40,25 @@ const SingleActivity = () => {
         formData,
         { withCredentials: true }
       );
+      toast.success("You are registered", {
+        style: {
+          borderRadius: "10px",
+          background: "#4CAF50",
+          color: "#fff",
+        },
+      });
       fetchIsRegistered();
       toggleModal();
       console.log(response);
     } catch (error) {
       console.error("Error creating participant:", error);
+      toast.error("Something went wrong", {
+        style: {
+          borderRadius: "10px",
+          background: "#F44336",
+          color: "#fff",
+        },
+      });
     }
   };
 

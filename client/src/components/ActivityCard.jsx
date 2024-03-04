@@ -3,6 +3,7 @@ import { IoLocation } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import toast from "react-hot-toast";
 
 const ActivityCard = ({ activity, fetchAllActivity }) => {
   const startingDate = new Date(activity.startingDate);
@@ -19,9 +20,23 @@ const ActivityCard = ({ activity, fetchAllActivity }) => {
       );
 
       console.log(response);
+      toast.success("Activity deleted Successfully", {
+        style: {
+          borderRadius: "10px",
+          background: "#4CAF50",
+          color: "#fff",
+        },
+      });
       fetchAllActivity();
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong", {
+        style: {
+          borderRadius: "10px",
+          background: "#F44336",
+          color: "#fff",
+        },
+      });
     }
   };
 
