@@ -16,7 +16,7 @@ const Doubts = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-  })
+  });
 
   const fetchDoubtsData = async () => {
     try {

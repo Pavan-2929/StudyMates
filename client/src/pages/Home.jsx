@@ -152,7 +152,7 @@ const Home = () => {
       ) : (
         <div className="bg-gray-200 p-6 rounded-lg shadow-lg heading">
           <h1 className="text-3xl font-semibold mb-4">
-            Welcome to <span className="platform">StudyMates</span>
+            Welcome to <span className="platform">UniLink</span>
           </h1>
 
           <p className="text-lg text-white">

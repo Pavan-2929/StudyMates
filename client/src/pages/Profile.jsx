@@ -28,15 +28,15 @@ const Profile = () => {
   const [image, setImage] = useState(undefined);
   const [imagePercentage, setImagePercentage] = useState(0);
   const [imageError, setImageError] = useState(false);
-  const [adminToggle, setAdminToggle] = useState(false)
+  const [adminToggle, setAdminToggle] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
   const toggleModal = () => {
-    setAdminToggle(!adminToggle)
-  }
+    setAdminToggle(!adminToggle);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -302,9 +302,7 @@ const Profile = () => {
           </div>
         </div>
       </form>
-      <div>
-        {adminToggle && <AdminModal toggleModal={toggleModal}/>}
-      </div>
+      <div>{adminToggle && <AdminModal toggleModal={toggleModal} />}</div>
     </div>
   );
 };

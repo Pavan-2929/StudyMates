@@ -31,7 +31,7 @@ function Header() {
     <nav className={` p-4 font-semibold border-b-2 border-gray-500`}>
       <div className="md:flex justify-around items-center">
         <div className="text-[2rem] flex justify-around items-center relative">
-          <span className=" animate-fire text-yellow-300">StudyMates</span>
+          <span className=" animate-fire text-yellow-300">UniLink</span>
           <div onClick={toggleMenu} className="md:hidden">
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </div>
@@ -64,6 +64,11 @@ function Header() {
                 </li>
                 <li className="md:ml-5 xl:mx-5 hover:text-red-600">
                   <NavLink to="/activity">Activity</NavLink>
+                </li>
+                <li className="md:ml-5 xl:mx-5 hover:text-red-600">
+                  <a href="https://zoom-20pf.onrender.com" target="_blank">
+                    Meeting
+                  </a>
                 </li>
                 <li className="md:ml-5 xl:mx-5 hover:text-red-600">
                   <NavLink to="/profile" onClick={closeMenu}>
