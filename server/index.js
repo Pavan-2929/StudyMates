@@ -14,7 +14,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const app = express();
 app.use(
-  cors({ credentials: true, origin: "https://studymates-server.onrender.com" })
+  cors({ credentials: true, origin: "https://studymates-2929.onrender.com" })
 );
 app.use(express.json());
 dotenv.config();
