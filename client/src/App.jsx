@@ -10,6 +10,7 @@ import Activity from "./pages/Activity";
 import SingleActivity from "./pages/SingleActivity";
 import Admin from "./pages/Admin";
 import Footer from "./components/Footer";
+import Chatboat from "./pages/Chatboat";
 
 function App() {
   return (
@@ -25,9 +26,10 @@ function App() {
           <Route path="/doubts/:id" element={<SingleDoubt />} />
           <Route path="/activity" element={<Activity />} />
           <Route path="/activity/:id" element={<SingleActivity />} />
-          <Route path="/admin" element={<Admin/>} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/chatboat" element={<Chatboat />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </BrowserRouter>
     </>
   );

@@ -71,6 +71,9 @@ function Header() {
                   </a>
                 </li>
                 <li className="md:ml-5 xl:mx-5 hover:text-red-600">
+                  <NavLink to="/chatboat">Chatboat</NavLink>
+                </li>
+                <li className="md:ml-5 xl:mx-5 hover:text-red-600">
                   <NavLink to="/profile" onClick={closeMenu}>
                     {currentUser && currentUser.profilePicture && (
                       <img

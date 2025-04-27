@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import authImage from "../assets/authImage.png";
 import axios from "axios";
 import { useDispatch } from "react-redux";
